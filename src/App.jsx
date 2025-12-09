@@ -11,7 +11,7 @@ import Register from "./Pages/register";
 import ResetPassword from "./Pages/ResetPassword";
 
 // ===== HALAMAN UTAMA =====
-import Home from "./Pages/Home";
+import Home from "./Pages/Home"; // <= diubah: Home -> home
 import Sejarah from "./Pages/sejarah";
 import Resep from "./Pages/resep";
 import Rekomendasi from "./Pages/rekomendasi";
@@ -61,7 +61,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         {/* ===== HALAMAN UMUM ===== */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/resep" element={<Resep />} />
         <Route path="/rekomendasi" element={<Rekomendasi />} />

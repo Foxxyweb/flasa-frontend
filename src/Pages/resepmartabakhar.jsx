@@ -153,12 +153,11 @@ export default function ResepMartabakHar() {
       setLoadingSubmit(true);
 
       // pakai sendReview, token di-handle axios interceptor
-      const res = await sendReview({
-        recipeSlug: RECIPE_SLUG,
-        displayName: name,
-        rating,
-        comment: message,
-      });
+       const res = await sendReview(RECIPE_SLUG, {
+      displayName: name,
+      rating: Number(rating),
+      comment: message,
+    });
 
       const { reviews = [], avgRating, ratingCount } = res.data;
       setReviewPages(buildPages(reviews));

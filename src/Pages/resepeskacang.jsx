@@ -156,12 +156,11 @@ export default function EsKacangMerah() {
       setLoadingSubmit(true);
 
       // pakai sendReview: token di-handle axios
-      const res = await sendReview({
-        recipeSlug: RECIPE_SLUG,
-        displayName: name,
-        rating,
-        comment: message,
-      });
+       const res = await sendReview(RECIPE_SLUG, {
+      displayName: name,
+      rating: Number(rating),
+      comment: message,
+    });
 
       const { reviews = [], avgRating, ratingCount } = res.data;
       setReviewPages(buildPages(reviews));

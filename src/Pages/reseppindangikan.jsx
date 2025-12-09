@@ -179,12 +179,11 @@ export default function ResepPindangIkan() {
       setLoadingSubmit(true);
 
       // token TIDAK perlu diambil, sudah otomatis dari interceptor
-      const res = await sendReview({
-        recipeSlug: RECIPE_SLUG,
-        displayName: name,
-        rating,
-        comment: message,
-      });
+      const res = await sendReview(RECIPE_SLUG, {
+      displayName: name,
+      rating: Number(rating),
+      comment: message,
+    });
 
       const { reviews = [], avgRating, ratingCount } = res.data;
 

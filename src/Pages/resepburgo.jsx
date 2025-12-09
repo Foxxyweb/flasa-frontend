@@ -160,12 +160,11 @@ export default function ResepBurgo() {
       setLoadingSubmit(true);
 
       // Tidak perlu kirim token manual; axios interceptor sudah handle Authorization header
-      const res = await sendReview({
-        recipeSlug: RECIPE_SLUG,
-        displayName: name,
-        rating,
-        comment: message,
-      });
+       const res = await sendReview(RECIPE_SLUG, {
+      displayName: name,
+      rating: Number(rating),
+      comment: message,
+    });
 
       const { reviews = [], avgRating, ratingCount } = res.data;
       setReviewPages(buildPages(reviews));

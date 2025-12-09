@@ -144,12 +144,11 @@ export default function ModelPalembang() {
       setLoadingSubmit(true);
 
       // TIDAK perlu token di argumen, Authorization di-set oleh axios interceptor
-      const res = await sendReview({
-        recipeSlug: RECIPE_SLUG,
-        displayName: name,
-        rating,
-        comment: message,
-      });
+      const res = await sendReview(RECIPE_SLUG, {
+      displayName: name,
+      rating: Number(rating),
+      comment: message,
+    });
 
       const { reviews = [], avgRating, ratingCount } = res.data;
       setReviewPages(buildPages(reviews));

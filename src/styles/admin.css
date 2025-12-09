@@ -1,0 +1,367 @@
+/* ==== LAYOUT UTAMA ADMIN (navbar → konten → footer) ==== */
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f5f2; /* krem lembut */
+}
+
+/* area konten di tengah */
+.admin-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ==== HEADER DASHBOARD ==== */
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a0732a;
+  margin-bottom: 4px;
+}
+
+.admin-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3b2a16;
+  margin-bottom: 6px;
+}
+
+.admin-subtitle {
+  font-size: 14px;
+  color: #7b6c54;
+}
+
+/* badge halo kecil di samping nama */
+.admin-hello-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fff3d4;
+  font-size: 12px;
+  color: #8a6415;
+  margin-top: 8px;
+}
+
+/* ==== GRID KARTU MENU ==== */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* kartu menu umum */
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease, background 0.15s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  border-color: rgba(160, 115, 42, 0.4);
+}
+
+/* varian kartu utama */
+.admin-card-primary {
+  background: linear-gradient(135deg, #f2a01b, #f7c15a);
+  color: #3b2507;
+}
+
+.admin-card-primary .admin-card-label {
+  background: rgba(255, 255, 255, 0.18);
+  color: #3b2507;
+}
+
+/* isi kartu */
+.admin-card-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f7f5f2;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+
+.admin-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.admin-card-text {
+  font-size: 13px;
+  color: #7a6a53;
+  margin-bottom: 14px;
+}
+
+/* row di bagian bawah kartu: ikon + teks link */
+.admin-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.admin-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 13px;
+}
+
+/* tombol kecil "Lihat detail" di kartu */
+.admin-link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #8a6415;
+}
+
+.admin-link-cta span:last-child {
+  font-size: 14px;
+}
+
+/* supaya responsif di hp */
+@media (max-width: 768px) {
+  .admin-main {
+    padding: 24px 16px 72px;
+  }
+
+  .admin-title {
+    font-size: 22px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ===========================
+   LAYOUT HALAMAN ADMIN UMUM
+   =========================== */
+
+.admin-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 40px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-page-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  color: #111827;
+}
+
+.admin-page-subtitle {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Link "Kembali ke Dashboard" */
+.admin-back-link {
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111827;
+  text-decoration: none;
+  border: 1px solid #e5e7eb;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.admin-back-link:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   STATE & ALERT
+   =========================== */
+
+.admin-error {
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+/* Bisa dipakai juga kalau mau gaya info / sukses di admin lain */
+.admin-info {
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #bfdbfe;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   TABLE WRAPPER
+   =========================== */
+
+.admin-table-wrapper {
+  margin-top: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+/* Scroll horizontal kalau layar kecil */
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+/* ===========================
+   TABEL ADMIN
+   =========================== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 700px;
+}
+
+.admin-table thead tr {
+  background: #f9fafb;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.admin-table tbody tr:hover {
+  background: #eef2ff;
+}
+
+/* Kolom komentar biar tidak terlalu mepet */
+.admin-table td:nth-child(5) {
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+/* ===========================
+   BUTTON AKSI
+   =========================== */
+
+.admin-btn-danger {
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #ef4444;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background 0.15s ease, transform 0.1s ease,
+    box-shadow 0.15s ease;
+}
+
+.admin-btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(220, 38, 38, 0.25);
+}
+
+.admin-btn-danger:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 16px 16px 28px;
+  }
+
+  .admin-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-back-link {
+    align-self: flex-start;
+  }
+}

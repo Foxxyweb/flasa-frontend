@@ -1,0 +1,7442 @@
+/* Reset sederhana biar rapi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  width: 100%;
+  padding: 10px 40px;
+  background-color: #8a5b27;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px 0;
+  position: relative;
+}
+
+/* Hover garis bawah */
+.navbar-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: #ffb700;
+  transition: width 0.2s ease;
+}
+
+.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
+/* ================= COVER ================= */
+
+/* wrapper cover */
+.cover {
+  width: 100%;
+  position: relative;
+  margin-top: 0;
+}
+
+/* cover.png full, gak kepotong */
+.cover > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TEKS DI ATAS COVER (KIRI) */
+.cover-text {
+  position: absolute;      /* nempel di atas gambar */
+  top: 18%;
+  left: 7%;
+  max-width: 540px;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.cover-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 56px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin-bottom: 22px;
+}
+
+.cover-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.cover-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background-color: #ffb700;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.cover-btn:hover {
+  filter: brightness(0.95);
+}
+
+/* GORESAN KUAS DI "KULINER AUTENTIK" */
+.cover-highlight {
+  position: relative;
+  display: inline-block;
+  padding: 0 4px;
+  z-index: 3;
+}
+
+.cover-highlight::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  bottom: 4px;
+  height: 0.45em;
+  background: #ffc107;
+  border-radius: 999px;
+  transform: skewX(-12deg);
+  filter: blur(1px);
+  opacity: 0.95;
+  z-index: -2;
+}
+
+.cover-highlight::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 6px;
+  height: 0.22em;
+  background: #ffe066;
+  border-radius: 999px;
+  transform: skewX(-18deg);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+/* MANGKUK SUPER GEDE */
+.cover-bowl {
+  position: absolute;
+  right: -15%;
+  bottom: -15%;   /* dari -28% jadi -10%, otomatis naik ke atas */
+  width: 70vw;
+  max-width: none;
+  z-index: 2;
+  animation: bowl-float 5s ease-in-out infinite;
+}
+
+
+.cover-bowl img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Animasi mangkuk mengambang */
+@keyframes bowl-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+/* ====== RESPONSIVE COVER ====== */
+
+@media (max-width: 1200px) {
+  .cover {
+    padding: 70px 60px 40px;
+  }
+
+  .cover-bowl {
+    right: -12%;
+    bottom: -24%;
+    width: 75vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .cover {
+    padding: 70px 40px 40px;
+  }
+
+  .cover-text {
+    max-width: 60%;
+  }
+
+  .cover-bowl {
+    right: -10%;
+    bottom: -22%;
+    width: 80vw;
+  }
+}
+
+/* HP – mangkuk pindah ke bawah */
+@media (max-width: 768px) {
+  .cover {
+    padding: 96px 24px 40px;
+  }
+
+  .cover-text {
+    max-width: none;
+  }
+
+  .cover-text h1 {
+    font-size: 32px;
+  }
+
+  .cover-text p {
+    font-size: 14px;
+  }
+
+  .cover-btn {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cover-bowl {
+    position: static;
+    width: 260px;
+    margin: 220px auto 0;
+    animation: none;
+  }
+}
+
+/* ============ Mengapa Kuliner Istimewa ============ */
+
+.why-section {
+  padding: 60px 40px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.why-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #b63424;
+}
+
+.why-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.why-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  max-width: 260px;
+  padding: 24px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.why-card h3 {
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 40px 20px;
+  }
+
+  .why-card {
+    max-width: 100%;
+  }
+}
+
+/* ============ SEJARAH KULINER (SLIDER) ============ */
+
+.history-section {
+  padding: 60px 40px 70px;
+  background-color: #8a5b27;
+  text-align: center;
+}
+
+.history-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.history-slider {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.history-viewport {
+  overflow: hidden;
+}
+
+.history-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.history-page {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.history-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+  max-width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-card-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.history-card-image img {
+  width: 100%;
+  display: block;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffb700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.play-button span {
+  color: #ffffff;
+  font-size: 26px;
+  margin-left: 3px;
+}
+
+.history-card-body {
+  padding: 24px 22px 28px;
+  text-align: center;
+}
+
+.history-card-body h3 {
+  font-size: 20px;
+  color: #b63424;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.history-card-body p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.history-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background-color: #ffb700;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.history-btn:hover {
+  filter: brightness(0.95);
+}
+
+.history-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffb700;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.history-nav.prev {
+  left: -10px;
+}
+
+.history-nav.next {
+  right: -10px;
+}
+
+@media (max-width: 900px) {
+  .history-section {
+    padding: 40px 20px 50px;
+  }
+
+  .history-track {
+    flex-direction: column;
+    transform: none !important;
+  }
+
+  .history-page {
+    min-width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .history-card {
+    max-width: 100%;
+  }
+
+  .history-nav {
+    display: none;
+  }
+}
+
+/* ============ RESEP (SLIDER OTOMATIS) ============ */
+
+.recipe-section {
+  padding: 60px 40px 80px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.recipe-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #b63424;
+}
+
+.recipe-slider {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.recipe-viewport {
+  overflow: hidden;
+}
+
+.recipe-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.recipe-page {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.recipe-card {
+  border: 2px solid #c74632;
+  border-radius: 24px;
+  padding: 32px 24px 28px;
+  max-width: 280px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-image-wrap {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.recipe-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-title {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #b63424;
+  margin-bottom: 14px;
+}
+
+.recipe-desc {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.recipe-btn {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 999px;
+  background-color: #ffb700;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.recipe-btn:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 900px) {
+  .recipe-section {
+    padding: 40px 20px 60px;
+  }
+
+  .recipe-track {
+    flex-direction: column;
+    transform: none !important;
+  }
+
+  .recipe-page {
+    min-width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .recipe-card {
+    max-width: 100%;
+  }
+}
+
+/* ============ REKOMENDASI TEMPAT (MAP) ============ */
+
+.location-section {
+  padding: 60px 40px 80px;
+  background-color: #ffffff;
+}
+
+.location-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.location-map-card {
+  background-color: #8a5b27;
+  border-radius: 24px;
+  padding: 20px;
+  flex: 0 0 360px;
+}
+
+.location-map-inner {
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  height: 260px;
+}
+
+.location-map-inner iframe {
+  display: block;
+}
+
+.location-content {
+  flex: 1;
+}
+
+.location-content h2 {
+  font-size: 28px;
+  color: #b63424;
+  margin-bottom: 16px;
+}
+
+.location-content p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.location-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 999px;
+  background-color: #ffb700;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.location-btn:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 900px) {
+  .location-section {
+    padding: 40px 20px 60px;
+  }
+
+  .location-wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .location-map-card {
+    width: 100%;
+  }
+
+  .location-content h2,
+  .location-content p {
+    text-align: center;
+  }
+
+  .location-btn {
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
+
+/* ============ FOOTER KUNING ============ */
+
+.site-footer {
+  background-color: #d89a00;
+  color: #3f2b1f;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-menu {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-link {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #3f2b1f;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: #3f2b1f;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #3f2b1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #3f2b1f;
+  font-size: 16px;
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social:hover {
+  background-color: #ffffff;
+  color: #d89a00;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-right {
+    align-self: center;
+  }
+
+  .footer-copy {
+    max-width: 100%;
+  }
+}
+
+/* ============ HALAMAN SEJARAH – HERO ATAS ============ */
+
+.sejarah-main {
+  background-color: #ffffff;
+}
+
+/* blok putih besar di bawah navbar */
+.sejarah-hero {
+  padding: 60px 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+/* judul kiri + garis + teks kanan */
+.sejarah-hero-inner {
+  display: flex;
+  align-items: center;      /* teks sejajar tengah dengan garis kuning */
+  gap: 80px;                /* jarak lebih lebar → teks agak ke kanan */
+  margin-bottom: 40px;
+}
+
+.sejarah-hero-left h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #b63424; /* merah seperti contoh */
+}
+
+/* garis kuning vertikal */
+.sejarah-hero-divider {
+  width: 6px;
+  height: 120px;
+  background-color: #ffb700;
+}
+
+/* teks deskripsi kanan */
+.sejarah-hero-right p {
+  font-size: 22px;          /* diperbesar */
+  line-height: 1.8;
+  color: #222222;
+  max-width: 520px;
+}
+
+/* = Tabs kategori = */
+.sejarah-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #f0d0c9;
+  padding-bottom: 16px;
+  margin-top: 10px;
+}
+
+.sejarah-tab {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  color: #d79a8f; /* warna pink muda seperti di contoh */
+}
+
+.sejarah-tab.active {
+  color: #b63424;
+  position: relative;
+}
+
+/* garis kecil di bawah tab aktif */
+.sejarah-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #ffb700;
+}
+
+/* responsif */
+@media (max-width: 900px) {
+  .sejarah-hero {
+    padding: 40px 20px 30px;
+  }
+
+  .sejarah-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .sejarah-hero-divider {
+    width: 80px;
+    height: 4px;
+  }
+
+  .sejarah-hero-right p {
+    max-width: none;
+    font-size: 18px;
+  }
+
+  .sejarah-tabs {
+    gap: 24px;
+    overflow-x: auto;
+  }
+}
+
+/* ============ HALAMAN SEJARAH – GRID 9 KOTAK ============ */
+
+.sejarah-grid-section {
+  padding: 40px 40px 80px;
+  background-image: url("public/img/bg-ampera-tipis.png"); /* opsional: ganti dengan gambar header dari index kalau ada */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sejarah-grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* kartu satuan */
+.sejarah-card {
+  background-color: transparent;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+/* bagian gambar (atas) */
+.sejarah-card-image img {
+  width: 100%;
+  display: block;
+}
+
+/* bagian bawah warna kuning + teks */
+.sejarah-card-footer {
+  background-color: #f4a703;          /* kuning oranye */
+  padding: 14px 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #642000;                     /* coklat gelap biar kebaca */
+  font-family: "Poppins", sans-serif;
+}
+
+/* responsif – HP / tablet */
+@media (max-width: 992px) {
+  .sejarah-grid-section {
+    padding: 30px 20px 60px;
+  }
+
+  .sejarah-grid-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sejarah-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   HALAMAN DETAIL SEJARAH (PINDANG IKAN, DLL)
+   ========================================================= */
+
+/* =========================================================
+   HALAMAN DETAIL SEJARAH (PINDANG IKAN, DLL)
+   ========================================================= */
+
+.detail-body {
+  min-height: 100vh;
+  background-image: url("/img/baground2sjr.png"); /* pastikan nama file benar */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  /* efek parallax ringan */
+}
+
+/* wrapper konten */
+.detail-main {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 0 80px;   /* ⬅️ tambah padding-top 40px (dulunya 0) */
+  background-color: rgba(245, 245, 245, 0.9);
+}
+
+/* kalau masih ada .detail-hero-bg di CSS, matikan saja */
+.detail-hero-bg {
+  display: none;
+}
+
+
+/* sebelumnya: margin: 40px auto 0; */
+.detail-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;         /* ⬅️ hilangkan margin-top 40px */
+  padding: 0 24px 60px;
+}
+
+/* TOP BAR */
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.detail-back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: rgba(185, 52, 36, 0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.detail-back-btn span {
+  transform: translateX(-1px);
+}
+
+.detail-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.detail-title-pill {
+  display: inline-block;
+  background-color: #f6b41a;
+  color: #5a2600;
+  padding: 10px 40px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 4px;
+}
+
+.detail-subtitle {
+  font-size: 12px;
+  color: #7a2b20;
+  text-align: center;
+}
+
+/* SECTION 1 */
+.detail-section {
+  position: relative;
+}
+
+.detail-section-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.detail-text-box {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 10px;
+  padding: 24px 26px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.detail-text-box h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #c13a1f;
+}
+
+.detail-text-box p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* kartu foto miring */
+.detail-photo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-photo-inner {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  background-color: #7b1c26;
+  padding: 14px;
+  border-radius: 8px;
+  transform: rotate(6deg);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.detail-photo-inner img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.detail-play-btn {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  background-color: #ffc400;
+  color: #b63424;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* SECTION 2 */
+.detail-section-2 {
+  position: relative;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.detail-bottom-left {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  padding-left: 12px;
+}
+
+.detail-bottom-left h3 {
+  color: #b63424;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.detail-bottom-card {
+  margin: 80px auto 0;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 10px;
+  padding: 24px 26px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.detail-bottom-card p {
+  margin-bottom: 10px;
+}
+
+/* dots dekoratif */
+.detail-dots {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.detail-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background-color: #f0b568;
+  opacity: 0.5;
+}
+
+.detail-dots .dot.active {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .detail-section-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-photo-inner {
+    transform: rotate(3deg);
+    margin-top: 10px;
+  }
+
+  .detail-bottom-left {
+    position: static;
+    margin-bottom: 8px;
+  }
+
+  .detail-bottom-card {
+    margin-top: 12px;
+  }
+}
+/* =========================================================
+   HALAMAN SEJARAH KULINER – PERBAIKI HERO
+   ========================================================= */
+
+.sejarah-main {
+  padding: 40px 40px 80px;
+  background-color: #f7f5f2;
+  font-family: "Poppins", sans-serif;
+}
+
+/* HERO ATAS */
+.sejarah-hero {
+  /* BUANG tampilan kartu putih */
+  background-color: transparent !important;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.sejarah-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto minmax(0, 1.5fr);
+  align-items: center;
+  column-gap: 40px;
+}
+
+.sejarah-hero-left h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.3;
+  color: #b63424;
+}
+
+.sejarah-hero-divider {
+  width: 4px;
+  height: 140px;
+  background-color: #f7b318;
+  border-radius: 20px;
+}
+
+.sejarah-hero-right p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* TAB KATEGORI, GRID KARTU, RESPONSIVE – biarin sama saja */
+.sejarah-tabs {
+  margin-top: 40px;
+  display: flex;
+  gap: 40px;
+  border-bottom: 2px solid #f2d2c8;
+  padding-bottom: 10px;
+}
+
+.sejarah-tab {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  color: #d29a88;
+}
+
+.sejarah-tab.active {
+  color: #b63424;
+}
+
+.sejarah-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 60px;
+  height: 4px;
+  background-color: #f7b318;
+  border-radius: 999px;
+}
+
+.sejarah-grid-section {
+  margin-top: 40px;
+}
+
+.sejarah-grid-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.sejarah-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.sejarah-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+}
+
+.sejarah-card-image img {
+  width: 100%;
+  display: block;
+}
+
+.sejarah-card-footer {
+  background-color: #f6b41a;
+  color: #5a2600;
+  text-align: center;
+  padding: 10px 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .sejarah-main {
+    padding: 24px 20px 60px;
+  }
+
+  .sejarah-hero-inner {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .sejarah-hero-divider {
+    height: 4px;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+  .sejarah-tabs {
+    gap: 16px;
+    overflow-x: auto;
+  }
+
+  .sejarah-grid-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .sejarah-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .sejarah-hero-left h1 {
+    font-size: 28px;
+  }
+
+  .sejarah-hero-right p {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   DETAIL BURGO (page burgo.html)
+   ========================================================= */
+body.detail-burgo {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #3a2a22;
+  background-color: #f7f3ee;
+}
+
+/* wrapper utama */
+body.detail-burgo .detail-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px 32px 40px;
+  overflow: hidden;
+}
+
+/* background besar di belakang (kalau punya file BG sendiri) */
+body.detail-burgo .detail-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* ganti BG-BURGO.png kalau nama file bg-mangkukmu beda,
+     atau boleh dihapus kalau nggak pakai background besar */
+  background: url("public/img/BG-BURGO.png") center / cover no-repeat;
+  opacity: 0.32;
+  z-index: -1;
+}
+
+/* tombol kembali */
+body.detail-burgo .detail-back {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+/* HEADER CHIP + QUOTE */
+body.detail-burgo .detail-header {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+body.detail-burgo .detail-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 28px;
+  border-radius: 999px;
+  background-color: #f1a900;
+  color: #3a2112;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+body.detail-burgo .detail-quote {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #7b3c1e;
+}
+
+/* KONTEN ATAS */
+body.detail-burgo .detail-main {
+  display: flex;
+  gap: 28px;
+  margin: 18px auto 32px;
+  max-width: 1080px;
+}
+
+/* kartu putih */
+body.detail-burgo .detail-card {
+  background-color: rgba(255, 255, 255, 0.93);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+/* kartu teks kiri */
+body.detail-burgo .detail-card-main {
+  flex: 1.25;
+  padding: 28px 28px 24px;
+}
+
+body.detail-burgo .detail-section-title {
+  margin: 0 0 18px;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 22px;
+  color: #b23a20;
+}
+
+body.detail-burgo .detail-card-main p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #3a2a22;
+}
+
+/* FOTO KANAN */
+body.detail-burgo .detail-photo-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+body.detail-burgo .detail-photo-inner {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  transform: rotate(6deg);
+  position: relative;
+  overflow: visible;
+}
+
+body.detail-burgo .detail-photo-img {
+  display: block;
+  width: 260px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* lingkaran play kuning */
+body.detail-burgo .detail-play-circle {
+  position: absolute;
+  right: 10%;
+  bottom: 18%;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background-color: #f3b208;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.detail-burgo .detail-play-icon {
+  color: #fff;
+  font-size: 26px;
+  margin-left: 4px;
+}
+
+body.detail-burgo .detail-photo-caption {
+  font-size: 11px;
+  color: #5a4335;
+  text-align: center;
+  max-width: 280px;
+}
+
+/* BAGIAN BAWAH: FILOSOFI */
+body.detail-burgo .detail-bottom {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding-bottom: 40px;
+}
+
+body.detail-burgo .detail-bottom-inner {
+  position: relative;
+  padding: 42px 18px 18px;
+}
+
+/* judul kiri */
+body.detail-burgo .detail-bottom-title {
+  position: absolute;
+  left: 28px;
+  top: 4px;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #b23a20;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+body.detail-burgo .detail-bottom-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: #f3b208;
+  margin-top: 6px;
+}
+
+/* kartu teks bawah */
+body.detail-burgo .detail-card-bottom {
+  padding: 26px 26px 22px;
+  margin-left: 220px; /* supaya judul kiri tidak ketimpa */
+}
+
+body.detail-burgo .detail-card-bottom p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #3a2a22;
+}
+
+/* RESPONSIVE */
+@media (max-width: 880px) {
+  body.detail-burgo .detail-wrapper {
+    padding: 18px 16px 32px;
+  }
+
+  body.detail-burgo .detail-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.detail-burgo .detail-photo-inner {
+    transform: rotate(2deg);
+    margin: 0 auto;
+  }
+
+  body.detail-burgo .detail-bottom-title {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 12px;
+  }
+
+  body.detail-burgo .detail-card-bottom {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body.detail-burgo .detail-chip {
+    padding: 4px 20px;
+    font-size: 14px;
+  }
+
+  body.detail-burgo .detail-card-main,
+  body.detail-burgo .detail-card-bottom {
+    padding: 20px 18px 18px;
+  }
+
+  body.detail-burgo .detail-section-title {
+    font-size: 20px;
+  }
+}
+.detail-hero-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("public/img/pindangikan1.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  z-index: -1;
+}
+/* ====== OVERRIDE BACKGROUND UNTUK HALAMAN BURGO ====== */
+/* body.detail-burgo dipakai di <body> burgo.html */
+body.detail-burgo .detail-hero-bg {
+  background-image: url("public/img/burgosjr.png.jpg"); /* ganti kalau nama file beda */
+}
+/* ====== OVERRIDE BACKGROUND UNTUK HALAMAN BURGO ====== */
+body.detail-burgo .detail-hero-bg {
+  background-image: url("public/img/SEJBURGO.png");
+}
+
+/* ====== OVERRIDE BACKGROUND UNTUK HALAMAN MIE CELOR ====== */
+body.detail-miecelor .detail-hero-bg {
+  background-image: url("public/img/SEJMIECELOR.png");
+}
+
+/* ================================
+   HALAMAN DETAIL KULINER
+   (Pindang, Burgo, Mie Celor, Kue 8 Jam, dll)
+   ========================================= */
+
+/* =========================================================
+   HALAMAN DETAIL SEJARAH (PINDANG IKAN, BURGO, MIE CELOR, KUE 8 JAM, DLL)
+   ========================================================= */
+
+.detail-body {
+  background-color: #f5f5f5;
+}
+
+.detail-main {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* background besar (panci/bowl blur) - GENERIC + FALLBACK
+   → kalau class kedua (pindang-bg, burgo-bg, dll) kelupaan,
+     tetap pakai bg pindangikansjr */
+.detail-hero-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("public/img/pindangikansjr.png"); /* fallback default */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+/* ====== BACKGROUND PER MAKANAN (pakai file ...sjr) ====== */
+
+/* Pindang Ikan */
+.detail-body.pindang-bg .detail-hero-bg {
+  background-image: url("public/img/pindangikansjr.png");
+}
+
+/* Burgo */
+.detail-body.burgo-bg .detail-hero-bg {
+  background-image: url("public/img/burgosjr.png");
+}
+
+/* Mie Celor */
+.detail-body.miecelor-bg .detail-hero-bg {
+  background-image: url("public/img/miecelorsjr.png");
+}
+
+/* Kue 8 Jam */
+.detail-body.kue8jam-bg .detail-hero-bg {
+  background-image: url("public/img/kue8jamsjr.png");
+}
+
+/* Es Kacang */
+.detail-body.eskacang-bg .detail-hero-bg {
+  background-image: url("public/img/eskacangsjr.png");
+}
+
+/* Kue Maksuba */
+.detail-body.kuemaksuba-bg .detail-hero-bg {
+  background-image: url("public/img/kuemaksubasjr.png");
+}
+
+/* Pindang Tulang */
+.detail-body.pindangtulang-bg .detail-hero-bg {
+  background-image: url("public/img/pindangtulangsjr.png");
+}
+
+/* Model */
+.detail-body.model-bg .detail-hero-bg {
+  background-image: url("public/img/modelsjr.png");
+}
+
+/* Martabak Har */
+.detail-body.martabakhar-bg .detail-hero-bg {
+  background-image: url("public/img/martabakharsjr.png");
+}
+
+
+/* wrapper konten agar ngambang di atas bg */
+.detail-wrapper {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 0 24px 60px;
+}
+
+/* TOP BAR */
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.detail-back-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: rgba(185, 52, 36, 0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.detail-back-btn span {
+  transform: translateX(-1px);
+}
+
+.detail-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.detail-title-pill {
+  display: inline-block;
+  background-color: #f6b41a;
+  color: #5a2600;
+  padding: 10px 40px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 4px;
+}
+
+.detail-subtitle {
+  font-size: 12px;
+  color: #7a2b20;
+  text-align: center;
+}
+
+/* SECTION 1 */
+.detail-section {
+  position: relative;
+}
+
+.detail-section-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.detail-text-box {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 10px;
+  padding: 24px 26px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.detail-text-box h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #c13a1f;
+}
+
+.detail-text-box p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* kartu foto miring */
+.detail-photo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-photo-inner {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  background-color: #7b1c26;
+  padding: 14px;
+  border-radius: 8px;
+  transform: rotate(6deg);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.detail-photo-inner img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.detail-play-btn {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  background-color: #ffc400;
+  color: #b63424;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* SECTION 2 */
+.detail-section-2 {
+  position: relative;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.detail-bottom-left {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  padding-left: 12px;
+}
+
+.detail-bottom-left h3 {
+  color: #b63424;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.detail-bottom-card {
+  margin: 80px auto 0;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 10px;
+  padding: 24px 26px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.detail-bottom-card p {
+  margin-bottom: 10px;
+}
+
+/* dots dekoratif */
+.detail-dots {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.detail-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background-color: #f0b568;
+  opacity: 0.5;
+}
+
+.detail-dots .dot.active {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .detail-section-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-photo-inner {
+    transform: rotate(3deg);
+    margin-top: 10px;
+  }
+
+  .detail-bottom-left {
+    position: static;
+    margin-bottom: 8px;
+  }
+
+  .detail-bottom-card {
+    margin-top: 12px;
+  }
+}
+
+/* HALAMANRESEP */
+/* ================================
+   HALAMAN RESEP – HERO + GRID
+   ================================ */
+
+.resep-main {
+  background-color: #ffffff;
+  padding: 40px 40px 80px;
+  font-family: "Poppins", sans-serif;
+}
+
+.resep-hero {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.resep-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto minmax(0, 1.5fr);
+  align-items: center;
+  column-gap: 40px;
+}
+
+.resep-hero-left h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #b63424;
+}
+
+.resep-hero-divider {
+  width: 4px;
+  height: 140px;
+  background-color: #f7b318;
+  border-radius: 20px;
+}
+
+.resep-hero-right p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #222222;
+  max-width: 520px;
+}
+
+/* Tabs kategori */
+.resep-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #f0d0c9;
+  padding-bottom: 14px;
+  margin-top: 28px;
+}
+
+.resep-tab {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #d79a8f;
+  position: relative;
+}
+
+.resep-tab.active {
+  color: #b63424;
+}
+
+.resep-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #ffb700;
+}
+
+/* GRID RESEP */
+.resep-grid-section {
+  margin-top: 40px;
+}
+
+.resep-grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.resep-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.resep-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.resep-card-image img {
+  width: 100%;
+  display: block;
+}
+
+.resep-card-body {
+  padding: 16px 18px 18px;
+}
+
+.resep-card-body h3 {
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.resep-card-body p {
+  font-size: 13px;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+.resep-card-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #ffe7b5;
+  color: #8a4a14;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* navbar aktif di Resep (opsional) */
+.navbar-menu li a.active {
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .resep-main {
+    padding: 30px 20px 60px;
+  }
+
+  .resep-hero-inner {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .resep-hero-divider {
+    width: 80px;
+    height: 4px;
+    margin: 0 auto;
+  }
+
+  .resep-hero-right p {
+    font-size: 16px;
+    max-width: none;
+  }
+
+  .resep-tabs {
+    gap: 24px;
+    overflow-x: auto;
+  }
+
+  .resep-grid-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .resep-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .resep-hero-left h1 {
+    font-size: 30px;
+  }
+
+  .resep-hero-right p {
+    font-size: 14px;
+  }
+}
+
+/* ================================
+   HALAMAN RESEP – HERO + GRID
+   ================================ */
+
+.resep-main {
+  background-color: #ffffff;
+  padding: 40px 40px 80px;
+  font-family: "Poppins", sans-serif;
+}
+
+.resep-hero {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.resep-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) auto minmax(0, 1.5fr);
+  align-items: center;
+  column-gap: 40px;
+}
+
+.resep-hero-left h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #b63424;
+}
+
+.resep-hero-divider {
+  width: 4px;
+  height: 140px;
+  background-color: #f7b318;
+  border-radius: 20px;
+}
+
+.resep-hero-right p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #222222;
+  max-width: 520px;
+}
+
+/* Tabs kategori */
+.resep-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #f0d0c9;
+  padding-bottom: 14px;
+  margin-top: 28px;
+}
+
+.resep-tab {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #d79a8f;
+  position: relative;
+}
+
+.resep-tab.active {
+  color: #b63424;
+}
+
+.resep-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #ffb700;
+}
+
+/* GRID RESEP */
+.resep-grid-section {
+  margin-top: 40px;
+}
+
+.resep-grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.resep-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.resep-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.resep-card-image img {
+  width: 100%;
+  display: block;
+}
+
+.resep-card-body {
+  padding: 16px 18px 18px;
+}
+
+.resep-card-body h3 {
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.resep-card-body p {
+  font-size: 13px;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+.resep-card-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #ffe7b5;
+  color: #8a4a14;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* navbar aktif di Resep (opsional) */
+.navbar-menu li a.active {
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .resep-main {
+    padding: 30px 20px 60px;
+  }
+
+  .resep-hero-inner {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .resep-hero-divider {
+    width: 80px;
+    height: 4px;
+    margin: 0 auto;
+  }
+
+  .resep-hero-right p {
+    font-size: 16px;
+    max-width: none;
+  }
+
+  .resep-tabs {
+    gap: 24px;
+    overflow-x: auto;
+  }
+
+  .resep-grid-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .resep-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .resep-hero-left h1 {
+    font-size: 30px;
+  }
+
+  .resep-hero-right p {
+    font-size: 14px;
+  }
+}
+
+/* link pembungkus kartu resep */
+.resep-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;      /* supaya warna teks tetap sama */
+}
+
+.resep-card-link .resep-card {
+  height: 100%;        /* biar area klik full 1 kartu */
+}
+
+
+
+/* =====================================================
+   HALAMAN DETAIL RESEP BURGO
+   ===================================================== */
+
+.burgo-resep-body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+}
+
+/* buang padding/margin tambahan dari main */
+.burgo-resep-main {
+  margin: 0;
+  padding: 0;
+}
+
+/* =============== HERO GAMBAR BESAR =============== */
+/* HERO: foto tampil utuh, tidak dipotong */
+.burgo-hero {
+  position: relative;
+  width: 100vw;                    /* tetap full kiri–kanan */
+  margin-left: calc(50% - 50vw);   /* biar nempel ke tepi layar */
+  overflow: visible;
+}
+
+/* foto mengikuti rasio aslinya, tidak di-crop */
+.burgo-hero-img {
+  width: 100%;
+  height: auto;      /* biar tingginya ikut foto */
+  display: block;
+  object-fit: contain;  /* atau bisa dihapus, nggak apa-apa */
+}
+
+
+/* gradient putih di bawah gambar (fade) */
+.burgo-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 190px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 80%
+  );
+  pointer-events: none;
+}
+
+/* tombol back merah */
+.burgo-back-btn {
+  position: absolute;
+  top: 80px;
+  left: 180px;          /* geser dikit dari tepi, mirip desain figma */
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background-color: #b63424;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+
+.burgo-back-btn span {
+  transform: translateX(-2px);
+}
+
+/* bagian bawah hero: judul kiri, rating kanan */
+/* area bawah gambar: judul + waktu + rating */
+.burgo-hero-bottom {
+  position: absolute;
+  left: 220px;      /* boleh kamu geser kalau mau lebih kiri/kanan */
+  bottom: 60px;
+  display: flex;
+  align-items: center;          /* rating sejajar vertikal dengan judul */
+  justify-content: flex-start;  /* supaya tidak lari ke kanan */
+  gap: 32px;                    /* jarak antara judul dan rating */
+  z-index: 2;
+}
+
+
+/* kiri: "Resep Burgo" + waktu */
+.burgo-info-left h1 {
+  margin: 0 0 8px;
+  font-family: "Playfair Display", serif;
+  font-size: 64px;
+  line-height: 1.1;
+  color: #b63424;
+}
+
+.burgo-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: #a0a0a0;          /* abu-abu */
+  text-shadow: none;       /* biar nggak glow putih lagi */
+}
+
+.burgo-meta-icon {
+  font-size: 18px;
+  color: #a0a0a0;          /* ikon jam juga abu-abu */
+}
+
+
+/* kanan: pill rating */
+.burgo-rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 30px;
+  border-radius: 999px;
+  border: 3px solid #c34729;
+  background-color: #ffffff;
+}
+
+.burgo-rating-star {
+  font-size: 20px;
+  color: #ffb200;
+}
+
+.burgo-rating-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+/* ========= TAB RESEP BURGO DALAM 1 BAR MERAH ========= */
+
+/* ========= TAB RESEP BURGO DALAM 1 BAR MERAH ========= */
+
+/* bungkus bar merah di bawah "35 Menit" */
+/* bungkus bar merah – posisinya dikiri, sejajar dengan "35 Menit" */
+.burgo-tabs-wrap {
+  width: 100%;
+  margin-top: -20px;        /* kalau mau lebih nempel ke 35 Menit, bisa jadi -30 / -35 */
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 220px;      /* sama seperti left di .burgo-hero-bottom (220px) */
+  position: relative;
+  z-index: 5;
+}
+
+
+/* BAR MERAH PANJANG */
+.burgo-tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 10px 32px;
+  background-color: #b63424;      /* merah bar */
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* SEMUA TAB (default = transparan, teks putih) */
+.burgo-tab {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.15s ease, color 0.15s ease,
+              transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* TAB AKTIF = PIL KUNING */
+.burgo-tab.active {
+  background-color: #f6b41a;   /* kuning */
+  color: #5a2600;              /* coklat teks */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+/* hilangkan garis bawah versi lama */
+.burgo-tab.active::after {
+  content: none;
+}
+
+/* hover tab yang tidak aktif */
+.burgo-tab:hover:not(.active) {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1200px) {
+  .burgo-hero-bottom {
+    left: 140px;
+    right: 140px;
+  }
+
+  .burgo-tabs-wrap {
+    padding-left: 140px;
+  }
+}
+
+@media (max-width: 992px) {
+  .burgo-hero {
+    height: 460px;
+  }
+
+  .burgo-hero-bottom {
+    left: 80px;
+    right: 80px;
+    bottom: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .burgo-info-left h1 {
+    font-size: 44px;
+  }
+
+  .burgo-tabs-wrap {
+    padding-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .burgo-hero {
+    height: 420px;
+  }
+
+  .burgo-back-btn {
+    left: 20px;
+    top: 80px;
+  }
+
+  .burgo-hero-bottom {
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+  }
+
+  .burgo-info-left h1 {
+    font-size: 34px;
+  }
+
+  .burgo-tabs-wrap {
+    padding-left: 40px;   /* ikut geser kiri pada HP */
+  }
+
+  .burgo-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =======================================================
+   BURGO – KONTEN DI BAWAH TAB (TABEL BAHAN + SEE MORE)
+   ======================================================= */
+
+/* area konten burgo, diratakan dengan hero kiri */
+.burgo-content {
+  padding: 0 220px 60px;
+}
+
+/* panel per tab (bahan / alternatif / cara) */
+.burgo-panel {
+  display: none;
+}
+
+.burgo-panel.active {
+  display: block;
+}
+
+/* kartu putih */
+.burgo-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid #e3b0a2;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  padding: 20px 26px 18px;
+}
+
+/* area isi yang bisa di-expand */
+.burgo-card-inner {
+  max-height: 360px;        /* tinggi saat diringkas */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* dipakai untuk panel yang tidak perlu "see more" */
+.burgo-card-inner-open {
+  max-height: none;
+  overflow: visible;
+}
+
+/* saat tombol Lihat selengkapnya diklik */
+.burgo-card-inner.expanded {
+  max-height: 1200px;
+}
+
+/* judul bagian di dalam kartu (Bahan Utama, dll) */
+.burgo-card-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #b63424;
+  margin: 8px 0 10px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* tabel bahan (kiri nama, kanan jumlah) */
+/* garis tabel lebih tebal dan jelas */
+.burgo-table {
+  margin-bottom: 14px;
+  border-top: 2px solid #e09a82;   /* tadinya 1px */
+}
+/* Pastikan SEMUA baris tabel punya garis bawah */
+.burgo-table .burgo-row {
+  border-bottom: 1px solid #777777;   /* abu-abu tua */
+}
+
+/* Kalau sebelumnya ada rule last-child yang menghapus border, kita timpa lagi */
+.burgo-table .burgo-row:last-child {
+  border-bottom: 1px solid #777777;
+}
+
+
+.burgo-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 8px 4px;                /* sedikit lebih lega */
+  border-bottom: 2px solid #e09a82;/* tadinya 1px */
+  color: #4a3a32;
+}
+
+
+/* tombol SEE MORE */
+/* tombol SEE MORE di tengah kartu/tabel */
+.burgo-see-more-btn {
+  margin-top: 14px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;  /* ini yang bikin dia di tengah */
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background-color: #b63424;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* teks panel alternatif */
+.burgo-alt-text {
+  font-size: 14px;
+  color: #4a3a32;
+  line-height: 1.7;
+}
+
+/* langkah pembuatan */
+.burgo-steps {
+  margin-left: 18px;
+  font-size: 14px;
+  color: #4a3a32;
+  line-height: 1.7;
+}
+
+/* ======= RESPONSIVE UNTUK KONTEN BURGO ======= */
+@media (max-width: 1200px) {
+  .burgo-content {
+    padding: 0 140px 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .burgo-content {
+    padding: 0 80px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .burgo-content {
+    padding: 0 24px 40px;
+  }
+
+  .burgo-card {
+    padding: 18px 16px 16px;
+  }
+
+  .burgo-card-title {
+    font-size: 16px;
+  }
+
+  .burgo-row {
+    font-size: 13px;
+  }
+
+  .burgo-see-more-btn {
+    float: none;
+    display: block;
+    margin: 12px auto 0;
+  }
+}
+
+/* ==== 1. KOTAK LUAR TABEL (KARTU RESEP) DITEBELIN ==== */
+.burgo-card {
+  border: 2px solid #e09a82;      /* garis luar kotak lebih tebal */
+  border-radius: 18px;            /* kalau sudah ada, nggak masalah diulang */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12); /* biar tetap ada bayangan halus */
+}
+
+/* ==== 2. TEKS DI DALAM TABEL LEBIH TEBAL & MERAH ==== */
+
+/* Judul bagian, misal: Bahan Utama, Bahan Kuah, Pelengkap */
+.burgo-section-title {
+  color: #b63424;     /* merah */
+  font-weight: 1800;   /* tebal */
+}
+
+/* Isi baris-baris tabel: Tepung Beras, 100 g, dll */
+.burgo-row span {
+  font-weight: 600;   /* medium–bold */
+  color: #b63424;     /* merah seperti minta */
+}
+
+/* ===== GARIS DALAM TABEL RESEP (ABU-ABU TUA) ===== */
+
+/* garis pemisah antar baris */
+.burgo-row {
+  border-bottom: 1.5px solid #777777; /* abu-abu tua */
+}
+
+/* baris terakhir tanpa garis bawah biar rapi */
+.burgo-row:last-child {
+  border-bottom: none;
+}
+
+/* ====== JUDUL TABEL (Bahan Utama / Bahan Kuah / Pelengkap) ====== */
+.burgo-card-title {
+  position: relative;
+  margin: 24px 0 10px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: #b63424;
+  font-weight: 600;
+}
+
+/* garis kecil merah di bawah teks (biarkan) */
+.burgo-card-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #c74632;
+  border-radius: 999px;
+}
+
+/* ====== HAPUS GARIS KEDUA (YANG PANJANG) ====== */
+/* ini menghilangkan border atas tabel persis setelah judul */
+.burgo-card-title + .burgo-table {
+  border-top: none !important;   /* garis panjang di bawah judul hilang */
+  margin-top: 12px;
+  padding-top: 0;
+}
+
+/* ===== JUDUL BAGIAN (Bahan Utama / Bahan Kuah / Pelengkap) ===== */
+.burgo-card-title {
+  position: relative;
+  margin: 24px 0 18px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: #b63424;
+  font-weight: 600;
+  text-decoration: none !important;  /* buang garis underline pada teks */
+  border-bottom: none !important;    /* jaga-jaga kalau ada border */
+}
+
+/* SATU garis kecil di bawah judul */
+.burgo-card-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #c74632;
+  border-radius: 999px;
+}
+
+/* =====================================================
+   SECTION REVIEW RESEP BURGO
+   ===================================================== */
+
+.burgo-review-section {
+  padding: 60px 40px 80px;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #ffffff 45%,
+    #8a5b27 45%,
+    #8a5b27 100%
+  );
+}
+
+.burgo-review-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 32px;
+}
+
+.burgo-review-slider {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* tombol panah kiri/kanan */
+.burgo-review-nav {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: none;
+  background-color: #b63424;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.burgo-review-nav span {
+  transform: translateY(-1px);
+}
+
+/* area slider */
+.burgo-review-viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.burgo-review-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* satu halaman (isi 3 kartu) */
+.burgo-review-page {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* kartu review */
+.burgo-review-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e6c0b2;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+  padding: 22px 22px 26px;
+}
+
+.burgo-review-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.burgo-review-stars {
+  color: #ffb200;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.burgo-review-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5a4335;
+}
+
+/* dots */
+.burgo-review-dots {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.burgo-review-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: #f5d6a8;
+  cursor: pointer;
+}
+
+.burgo-review-dot.active {
+  background-color: #f6b41a;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .burgo-review-section {
+    padding: 40px 20px 60px;
+  }
+
+  .burgo-review-page {
+    grid-template-columns: 1fr;
+  }
+
+  .burgo-review-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .burgo-review-slider {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .burgo-review-title {
+    font-size: 24px;
+  }
+
+  .burgo-review-nav {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
+
+/* =====================================================
+   SECTION REVIEW
+   ===================================================== */
+
+.burgo-review-section {
+  padding: 60px 40px 70px;
+  background-color: #8a5b27;
+  color: #ffffff;
+  text-align: center;
+}
+
+.burgo-review-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.burgo-review-slider {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.burgo-review-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.burgo-review-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.burgo-review-page {
+  min-width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.burgo-review-card {
+  flex: 1;
+  background-color: #ffffff;
+  color: #3a2a22;
+  border-radius: 18px;
+  padding: 22px 24px 26px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  text-align: left;
+}
+
+.burgo-review-name {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.burgo-review-stars {
+  color: #ffb700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.burgo-review-text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.burgo-review-nav {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  background-color: #b63424;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burgo-review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.burgo-review-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #f3c989;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.burgo-review-dot.active {
+  opacity: 1;
+  background-color: #ffb700;
+}
+
+/* responsive review */
+@media (max-width: 900px) {
+  .burgo-review-section {
+    padding: 40px 20px 50px;
+  }
+
+  .burgo-review-page {
+    flex-direction: column;
+  }
+}
+
+/* =====================================================
+   SECTION BERi PENILAIAN
+   ===================================================== */
+
+.burgo-feedback-section {
+  padding: 60px 40px 80px;
+  background-color: #8a5b27;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.burgo-feedback-title {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.burgo-feedback-subtitle {
+  color: #ffe4c4;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.burgo-feedback-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 26px;
+  padding: 28px 32px 32px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+  text-align: left;
+}
+
+/* label & input – SESUAI HTML (bf-field) */
+.bf-field {
+  margin-bottom: 18px;
+}
+
+.bf-field label,
+.bf-label {
+  display: block;
+  font-size: 14px;
+  color: #7a4a2a;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.bf-field input,
+.bf-field textarea,
+.bf-input,
+.bf-textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #f1c1a6;
+  padding: 10px 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+}
+
+.bf-field input:focus,
+.bf-field textarea:focus,
+.bf-input:focus,
+.bf-textarea:focus {
+  border-color: #f6b41a;
+  box-shadow: 0 0 0 2px rgba(246, 180, 26, 0.22);
+}
+
+/* ====== STARS ====== */
+.bf-stars {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.bf-star {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: #d0d0d0;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.bf-star.active {
+  color: #ffb700;
+  transform: translateY(-1px);
+}
+
+/* tombol */
+.bf-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+.bf-btn-outline,
+.bf-btn-solid {
+  min-width: 150px;
+  padding: 10px 32px;
+  border-radius: 999px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* kiri: outline */
+.bf-btn-outline {
+  background-color: #ffffff;
+  border: 2px solid #f6b41a;
+  color: #f6b41a;
+}
+
+/* kanan: solid */
+.bf-btn-solid {
+  background-color: #f6b41a;
+  border: 2px solid #f6b41a;
+  color: #5a2600;
+}
+
+/* responsive form */
+@media (max-width: 768px) {
+  .burgo-feedback-section {
+    padding: 40px 20px 60px;
+  }
+
+  .burgo-feedback-card {
+    padding: 22px 18px 26px;
+  }
+
+  .bf-actions {
+    flex-direction: column;
+  }
+
+  .bf-btn-outline,
+  .bf-btn-solid {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   SECTION SLIDER REVIEW "BAGAIMANA RESEP INI MENURUTMU?"
+   ===================================================== */
+
+.burgo-review-section {
+  padding: 60px 40px 80px;
+  background-color: #f7f3ee;
+  text-align: center;
+}
+
+.burgo-review-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #b63424;
+  margin-bottom: 32px;
+}
+
+/* wrapper slider */
+.burgo-review-slider {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.br-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.br-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* setiap page = 3 kartu */
+.br-page {
+  min-width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.br-card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 22px 20px 26px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  text-align: left;
+}
+
+.br-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.br-stars {
+  color: #ffb700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.br-text {
+  font-size: 14px;
+  color: #5a4335;
+  line-height: 1.6;
+}
+
+/* panah kiri/kanan */
+.br-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #b63424;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+}
+
+/* dots indikator */
+.br-dots {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.br-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #e2b37e;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.br-dot.active {
+  opacity: 1;
+  background-color: #f6b41a;
+}
+
+/* responsive slider review */
+@media (max-width: 900px) {
+  .br-page {
+    flex-direction: column;
+  }
+
+  .br-card {
+    width: 100%;
+  }
+
+  .burgo-review-slider {
+    flex-direction: column;
+  }
+
+  .br-nav {
+    order: -1;
+  }
+}
+
+/* =====================================================
+   SECTION REKOMENDASI TEMPAT KULINER
+   ===================================================== */
+
+.burgo-place-section {
+  padding: 60px 40px 80px;
+  background-color: #8a5b27;
+  text-align: center;
+}
+
+.burgo-place-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+/* wrapper slider tempat */
+.burgo-place-slider {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bp-viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.bp-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.bp-page {
+  min-width: 100%;
+  display: flex;
+  gap: 24px;
+}
+
+.bp-card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.bp-body {
+  padding: 18px 18px 22px;
+  text-align: left;
+}
+
+.bp-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 8px;
+}
+
+.bp-text {
+  font-size: 14px;
+  color: #5a4335;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* tombol lihat lokasi */
+.bp-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background-color: #f6b41a;
+  color: #5a2600;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* panah kiri/kanan */
+.bp-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f6b41a;
+  color: #5a2600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  font-size: 22px;
+}
+
+/* responsive tempat kuliner */
+@media (max-width: 900px) {
+  .burgo-place-slider {
+    flex-direction: column;
+  }
+
+  .bp-page {
+    flex-direction: column;
+  }
+
+  .bp-card {
+    width: 100%;
+  }
+}
+
+/* =================== PANEL BAHAN ALTERNATIF (TAMBAHAN) =================== */
+
+.burgo-alt-container {
+  padding-top: 4px;
+}
+
+.burgo-alt-intro {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+  margin-bottom: 18px;
+}
+
+/* Kartu "Pengganti Tepung Sagu" */
+.burgo-alt-card {
+  width: 100%;
+  border-radius: 14px;
+  border: 2px solid #b63424;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.burgo-alt-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+.burgo-alt-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.burgo-alt-img {
+  max-height: 60px;
+  width: auto;
+  display: block;
+}
+
+.burgo-alt-arrow {
+  font-size: 26px;
+  font-weight: 700;
+  color: #b63424;
+}
+
+/* teks penjelasan di bawah kartu – pakai class lama */
+.burgo-alt-text {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .burgo-alt-title {
+    font-size: 18px;
+  }
+
+  .burgo-alt-card {
+    padding: 14px 16px;
+  }
+
+  .burgo-alt-img {
+    max-height: 46px;
+  }
+}
+
+/* =================== PANEL BAHAN ALTERNATIF – ACCORDION =================== */
+
+/* card khusus alternatif: transparan, tanpa border */
+.burgo-alt-card-wrapper {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* wrapper konten alternatif */
+.burgo-alt-wrapper {
+  padding: 8px 4px 4px;
+}
+
+/* teks judul di atas kotak */
+.burgo-alt-intro {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+  margin-bottom: 14px;
+}
+
+/* gaya umum semua kotak */
+.burgo-alt-item {
+  width: 100%;
+  border-radius: 16px;
+  border: 3px solid #b63424;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: left;
+}
+
+/* tombol utama bisa diklik */
+.burgo-alt-item-main {
+  cursor: pointer;
+  border: 3px solid #b63424;
+}
+
+/* hilangkan style default button */
+.burgo-alt-item-main {
+  font: inherit;
+  color: inherit;
+}
+
+/* efek hover biar kerasa hidup */
+.burgo-alt-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+}
+
+/* KOTAK UTAMA */
+.burgo-alt-title-main {
+  font-size: 20px;          /* tidak terlalu besar */
+  font-weight: 600;
+  color: #b63424;
+}
+
+.burgo-alt-main-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.burgo-alt-img-main {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.burgo-alt-chevron {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b63424;
+  transition: transform 0.2s ease;
+}
+
+/* saat open, panah mutar */
+.burgo-alt-item-main.open .burgo-alt-chevron {
+  transform: rotate(90deg);
+}
+
+/* DETAIL (awal: disembunyikan, lalu slide-down) */
+.burgo-alt-detail {
+  margin-top: 4px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.burgo-alt-detail.open {
+  max-height: 400px;  /* cukup untuk isi */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* KOTAK KEDUA DI DALAM DETAIL */
+.burgo-alt-item-secondary {
+  justify-content: flex-start;
+  box-shadow: none;
+}
+
+.burgo-alt-img-secondary {
+  height: 52px;
+  width: auto;
+  display: block;
+  margin-left: -4px;       /* sedikit keluar seperti desain */
+}
+
+.burgo-alt-secondary-text {
+  margin-left: 12px;
+}
+
+.burgo-alt-title-secondary {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.burgo-alt-desc {
+  font-size: 13px;
+  color: #5a4335;
+  line-height: 1.5;
+}
+
+/* teks bullet bawah */
+.burgo-alt-text {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #4a3a32;
+  line-height: 1.6;
+}
+
+/* responsive HP */
+@media (max-width: 768px) {
+  .burgo-alt-intro {
+    font-size: 16px;
+  }
+
+  .burgo-alt-item {
+    padding: 9px 14px;
+  }
+
+  .burgo-alt-title-main {
+    font-size: 18px;
+  }
+
+  .burgo-alt-title-secondary {
+    font-size: 16px;
+  }
+
+  .burgo-alt-img-main {
+    height: 38px;
+  }
+
+  .burgo-alt-img-secondary {
+    height: 42px;
+  }
+}
+
+/* =================== PANEL BAHAN ALTERNATIF – ACCORDION =================== */
+
+.burgo-alt-card-wrapper {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+.burgo-alt-wrapper {
+  padding: 8px 4px 4px;
+}
+
+.burgo-alt-intro {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+  margin-bottom: 14px;
+}
+
+/* umum kotak alternatif */
+.burgo-alt-item {
+  width: 100%;
+  border-radius: 16px;
+  border: 3px solid #b63424;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: left;
+}
+
+.burgo-alt-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+}
+
+/* tombol utama */
+.burgo-alt-item-main {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.burgo-alt-title-main {
+  font-size: 20px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+.burgo-alt-main-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.burgo-alt-img-main {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.burgo-alt-chevron {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b63424;
+  transition: transform 0.2s ease;
+}
+
+/* wrapper detail (daftar bahan pengganti) */
+.burgo-alt-detail {
+  margin-top: 4px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.burgo-alt-detail.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* KOTAK BAHAN PENGGANTI (TEPUNG TAPIOKA) */
+.burgo-alt-item-secondary {
+  flex-direction: column;
+  align-items: stretch;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* header: gambar + nama + panah */
+.burgo-alt-sec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.burgo-alt-sec-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.burgo-alt-img-secondary {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.burgo-alt-title-secondary {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+/* panah di kanan, mengarah ke bawah */
+.burgo-alt-sec-chevron {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b63424;
+  display: inline-block;
+  transform: rotate(90deg); /* ">" diputar ke bawah */
+  transition: transform 0.2s ease;
+}
+
+/* body penjelasan di dalam kotak */
+.burgo-alt-sec-body {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed #e2b37e;
+  font-size: 13px;
+  color: #5a4335;
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+/* saat kotak bahan pengganti dibuka */
+.burgo-alt-item-secondary.open .burgo-alt-sec-body {
+  max-height: 260px;
+  opacity: 1;
+}
+
+.burgo-alt-item-secondary.open .burgo-alt-sec-chevron {
+  transform: rotate(-90deg); /* jadi panah ke atas saat sudah terbuka */
+}
+
+.burgo-alt-desc {
+  margin: 0 0 6px;
+}
+
+.burgo-alt-text {
+  margin: 0;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .burgo-alt-intro {
+    font-size: 16px;
+  }
+
+  .burgo-alt-item {
+    padding: 9px 14px;
+  }
+
+  .burgo-alt-title-main {
+    font-size: 18px;
+  }
+
+  .burgo-alt-title-secondary {
+    font-size: 16px;
+  }
+
+  .burgo-alt-img-main {
+    height: 38px;
+  }
+
+  .burgo-alt-img-secondary {
+    height: 44px;
+  }
+}
+/* ========== PENYESUAIAN POSISI TEKS "TEPUNG TAPIOKA" ========== */
+
+/* kotak bahan pengganti dibuat sedikit lebih rapi padding-nya */
+.burgo-alt-item-secondary {
+  padding: 10px 18px;
+}
+
+/* header: gambar + teks + panah sejajar tengah */
+.burgo-alt-sec-header {
+  align-items: center;
+}
+
+/* blok kiri (gambar + teks) dorong isi ke kiri, panah ke kanan */
+.burgo-alt-sec-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;          /* jarak gambar–teks */
+}
+
+/* gambar sedikit diperkecil supaya tidak ngalahin teks */
+.burgo-alt-img-secondary {
+  height: 44px;
+}
+
+/* teks judul diset agar proporsional & sejajar */
+.burgo-alt-title-secondary {
+  font-size: 16.5px;  /* sedikit lebih kecil supaya enak dilihat */
+  line-height: 1.2;
+  font-weight: 600;
+  color: #b63424;
+  transform: translateY(1px);  /* turun dikit supaya center sama gambar */
+}
+
+/* panah tetap di kanan, ukurannya pas */
+.burgo-alt-sec-chevron {
+  font-size: 18px;
+}
+
+/* ========== PERBAIKI TAMPILAN TEKS "TEPUNG TAPIOKA" ========== */
+
+/* grup gambar + teks dibuat berada di tengah kotak */
+.burgo-alt-sec-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* ini yang bikin ke tengah */
+  gap: 12px;
+}
+
+/* teks bahan pengganti – dibuat sebesar "Pengganti Tepung Sagu" */
+.burgo-alt-title-secondary {
+  font-size: 20px;           /* sama dengan .burgo-alt-title-main */
+  font-weight: 600;
+  line-height: 1.1;
+  color: #b63424;
+}
+
+/* panah tetap di kanan */
+.burgo-alt-sec-chevron {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b63424;
+}
+
+/* ========== ADJUST TEKS "TEPUNG TAPIOKA" ========== */
+
+/* kotak bahan pengganti sedikit dipadetin biar keliatan penuh */
+.burgo-alt-item-secondary {
+  padding: 12px 20px;
+}
+
+/* gambar di kiri, teks di sampingnya (tidak center semua) */
+.burgo-alt-sec-main {
+  flex: 1;
+  display: flex;
+  align-items: center;        /* vertikal tengah antara gambar & teks */
+  justify-content: flex-start;/* gambar + teks tetap di kiri */
+  gap: 14px;
+}
+
+/* teks "Tepung Tapioka" dibesarkan biar seimbang sama judul utama */
+.burgo-alt-title-secondary {
+  font-size: 20px;            /* sama dengan .burgo-alt-title-main */
+  font-weight: 600;
+  line-height: 1.1;
+  color: #b63424;
+}
+
+/* ================= STEP WIZARD CARA PEMBUATAN ================= */
+
+.burgo-steps-card {
+  border: 2px solid #b63424;
+  border-radius: 18px;
+}
+
+.bw-stepper {
+  padding: 18px 20px 20px;
+}
+
+/* indikator 1 - 2 - 3 */
+.bw-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.bw-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e3e3e3;
+  color: #8b8b8b;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bw-step-dot.active {
+  background-color: #f6b41a;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.bw-line {
+  width: 40px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #e3e3e3;
+}
+
+/* panel step */
+.bw-step-panel {
+  display: none;
+}
+
+.bw-step-panel.active {
+  display: block;
+}
+
+/* judul & isi */
+.bw-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.bw-list {
+  margin: 0 0 16px 18px;
+  padding: 0;
+  font-size: 14px;
+  color: #5a4335;
+  line-height: 1.6;
+}
+
+/* tombol bawah */
+.bw-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.bw-btn {
+  min-width: 140px;
+  padding: 8px 26px;
+  border-radius: 999px;
+  border: none;
+  background-color: #f6b41a;
+  color: #5a2600;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition: transform 0.1s ease;
+}
+
+.bw-btn:hover {
+  transform: translateY(-1px);
+}
+
+.bw-prev-btn {
+  background-color: #ffffff;
+  color: #f6b41a;
+  border: 2px solid #f6b41a;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .bw-stepper {
+    padding: 14px 10px 16px;
+  }
+
+  .bw-list {
+    font-size: 13px;
+  }
+
+  .bw-btn {
+    min-width: 120px;
+    padding: 8px 18px;
+  }
+
+  .bw-actions {
+    flex-direction: column;
+  }
+}
+
+/* ================== OVERLAY PERAYAAN BURGO ================== */
+
+.bw-celebrate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 999;
+}
+
+.bw-celebrate-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bw-celebrate-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 26px 28px 24px;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  animation: bw-pop-in 0.3s ease-out;
+}
+
+.bw-celebrate-emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+  animation: bw-bounce 1s ease-in-out infinite;
+}
+
+.bw-celebrate-title {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.bw-celebrate-text {
+  font-size: 14px;
+  color: #5a4335;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* tombol Yeay pakai style bw-btn yang sudah ada */
+.bw-close-celebrate {
+  min-width: 150px;
+}
+
+/* animasi */
+@keyframes bw-pop-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bw-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .bw-celebrate-card {
+    margin: 0 16px;
+    padding: 22px 18px 20px;
+  }
+
+  .bw-celebrate-title {
+    font-size: 20px;
+  }
+
+  .bw-celebrate-text {
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   PINdang Ikan – Bahan Alternatif
+   ================================ */
+
+.pi-alt-wrapper {
+  padding-top: 4px;
+}
+
+/* kartu umum */
+.pi-alt-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  border: 3px solid #b63424;
+  background-color: #ffffff;
+}
+
+/* kotak utama (ikan patin) lebar penuh */
+.pi-alt-card-main {
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+/* baris bawah: dua kotak sejajar */
+.pi-alt-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.pi-alt-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* teks di kotak */
+.pi-alt-name-main {
+  font-size: 26px;
+  font-weight: 700;
+  color: #b63424;
+}
+
+.pi-alt-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #b63424;
+}
+
+/* gambar ikan */
+.pi-alt-img {
+  width: 130px;
+  max-height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+/* tombol panah ">" */
+.pi-alt-arrow-btn {
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  font-weight: 700;
+  color: #b63424;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  transition: transform 0.2s ease;
+}
+
+.pi-alt-arrow-btn.active {
+  transform: rotate(90deg); /* biar berasa kebuka */
+}
+
+/* deskripsi yang muncul setelah diklik */
+.pi-alt-main-extra {
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1.5px dashed #e3b0a2;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a3a32;
+  display: none;
+}
+
+.pi-alt-main-extra.show {
+  display: block;
+}
+
+/* responsif */
+@media (max-width: 768px) {
+  .pi-alt-card {
+    padding: 12px 14px;
+  }
+
+  .pi-alt-name-main {
+    font-size: 22px;
+  }
+
+  .pi-alt-name {
+    font-size: 18px;
+  }
+
+  .pi-alt-img {
+    width: 90px;
+  }
+
+  .pi-alt-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   MIE CELOR – BAHAN ALTERNATIF (KOTAK BERTUMPUK)
+   ========================================= */
+.pi-alt-wrapper {
+  padding-top: 8px;
+}
+
+/* satu grup: kotak besar + kotak kecil */
+.pi-alt-group {
+  margin-bottom: 18px;
+}
+
+/* kotak besar: Pengganti Telur Ayam / Pengganti Kepala Udang */
+.pi-alt-main-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 10px 20px;
+  border-radius: 18px;
+  border: 2px solid #b63424;
+  background-color: #ffffff;
+
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.pi-alt-main-text {
+  font-size: 22px;         /* lebih kecil dari versi tadi */
+  font-weight: 600;
+  color: #b63424;
+}
+
+.pi-alt-main-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.pi-alt-arrow {
+  font-size: 22px;
+  color: #b63424;
+}
+
+/* kotak kecil: Telur Bebek / Ayam suir */
+.pi-alt-sub-card {
+  margin-top: 8px;
+  border-radius: 18px;
+  border: 2px solid #b63424;
+  background-color: #ffffff;
+  padding: 8px 14px;
+
+  display: none;           /* default: sembunyi */
+}
+
+.pi-alt-sub-card.show {
+  display: block;          /* muncul saat diklik */
+}
+
+.pi-alt-sub-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pi-alt-sub-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+.pi-alt-sub-text {
+  font-size: 22px;         /* sama besar dengan judul besar */
+  font-weight: 600;
+  color: #b63424;
+}
+
+/* responsive HP – kecilkan dikit lagi kalau layar sempit */
+@media (max-width: 768px) {
+  .pi-alt-main-text,
+  .pi-alt-sub-text {
+    font-size: 20px;
+  }
+
+  .pi-alt-main-img,
+  .pi-alt-sub-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ===== RAPIKAN REKOMENDASI TEMPAT KULINER – SEMUA DI TENGAH ===== */
+
+.bp-card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* isi card di tengah horizontal */
+  text-align: center;    /* teks di tengah */
+}
+
+.bp-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;        /* gambar di tengah */
+}
+
+.bp-body {
+  padding: 18px 22px 22px;
+  text-align: center;    /* judul & teks di tengah */
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* isi body juga di tengah */
+  gap: 8px;
+}
+
+.bp-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 4px;
+}
+
+.bp-text {
+  font-size: 14px;
+  color: #5a4335;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* tombol "Lihat Lokasi" di tengah */
+.bp-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background-color: #f6b41a;
+  color: #5a2600;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 8px auto 0;    /* ini yang bikin tombol pas di tengah */
+}
+
+/* =========================
+   GLOBAL – PANEL BAHAN ALTERNATIF
+   Berlaku untuk SEMUA resep
+   ========================== */
+
+/* Hapus card luar untuk panel alternatif di semua resep */
+.burgo-panel[data-panel="alternatif"] .burgo-card {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  padding: 0;
+}
+
+/* Wrapper konten alternatif – di tengah & nggak kepanjangan */
+.alt-section {
+  padding: 0;
+  max-width: 760px;           /* batasi lebar supaya kotak nggak terlalu panjang */
+  margin: 0 auto 24px;        /* center di tengah */
+}
+
+/* Judul "Bahan Alternatif" tetap pakai style burgo-card-title */
+.alt-section .burgo-card-title {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+/* Satu grup: header + detail */
+.alt-group {
+  margin-bottom: 12px;
+}
+
+/* KOTAK UMUM (header & detail) */
+.alt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #c74632;
+  border-radius: 22px;
+  padding: 12px 22px;
+  margin-bottom: 6px;
+  background-color: #ffffff;
+  text-align: left;
+  gap: 12px;
+}
+
+/* Kalau dia <button>, hilangkan style default browser */
+button.alt-row {
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* TEKS DI KOTAK */
+.alt-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+  flex: 1;                    /* supaya teks isi ambil sisa ruang */
+}
+
+/* BAGIAN KANAN (gambar + panah) UNTUK HEADER */
+.alt-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* GAMBAR – dibuat sedikit lebih besar */
+.alt-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+/* PANAH DI HEADER (bahan utama) */
+.alt-arrow {
+  font-size: 22px;
+  font-weight: 700;
+  color: #b63424;
+}
+
+/* ===== DETAIL YANG DI-TOGGLE ===== */
+
+.alt-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+/* Saat terbuka */
+.alt-detail.alt-open {
+  max-height: 420px;
+}
+
+/* ===== KHUSUS BARIS ALTERNATIF (foto di kiri, teks di kanan) ===== */
+
+.alt-row-sub {
+  cursor: default;            /* bukan tombol, jadi bukan pointer */
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+/* susunan diubah: gambar dulu, baru teks */
+.alt-row-sub .alt-right {
+  order: 0;                   /* gambar di kiri */
+}
+
+.alt-row-sub .alt-text {
+  order: 1;                   /* teks di kanan gambar */
+}
+
+
+/* =========================================
+   TEKS PENDUKUNG (UNTUK SEMUA RESEP)
+   ========================================= */
+.burgo-support-text {
+  margin: 6px 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b63424;            /* merah senada tema */
+  text-align: center;        /* biasanya di bawah judul */
+  letter-spacing: 0.01em;
+}
+
+/* kalau ada yang butuh rata kiri, cukup tambah class ini juga */
+.burgo-support-left {
+  text-align: left;
+}
+
+/* =========================================
+   OVERRIDE GLOBAL BAHAN ALTERNATIF
+   BIAR KOTAK NGGAK TERLALU PANJANG & LEBIH PADAT
+   ========================================= */
+
+/* batasi lebar area bahan alternatif */
+.alt-section {
+  max-width: 560px;          /* kartu jadi lebih pendek, nggak full layar */
+  margin: 0 auto 24px;       /* posisinya tetap di tengah */
+}
+
+/* kotak utama & kotak alternatif */
+.alt-row {
+  width: auto;               /* lebar mengikuti isi, bukan full 100% */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+}
+
+/* teks judul bahan (Pengganti..., Ketumbar, dll) */
+.alt-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+/* gambar bahan dibesarin biar isi kotak lebih “penuh” */
+.alt-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+/* khusus baris alternatif (gambar di kiri, teks di kanan) */
+.alt-row-sub {
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+/* di layar kecil tetap responsif (full lebar) */
+@media (max-width: 768px) {
+  .alt-section {
+    max-width: 100%;
+  }
+
+  .alt-row {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   PERAPIHAN SEMUA PANEL BAHAN ALTERNATIF
+   (Martabak, Model, Mie Celor, dll)
+   ========================================= */
+
+/* 1. Panel tab "Bahan Alternatif" - kartu dibuat max 640px & di tengah */
+.burgo-panel[data-panel="alternatif"] {
+  display: flex;
+  justify-content: center;
+}
+
+.burgo-panel[data-panel="alternatif"] > * {
+  width: 100%;
+  max-width: 640px;   /* KOTAK TIDAK FULL LAYAR LAGI */
+  margin: 0 auto;
+}
+
+/* 2. Versi global: .alt-section (Martabak HAR, dll) */
+.alt-section {
+  max-width: 640px;
+  margin: 0 auto 24px;
+}
+
+.alt-row,
+.alt-row-sub {
+  min-height: 78px;           /* biar nggak keliatan kosong */
+  padding: 12px 22px;
+}
+
+/* teks judul bahan */
+.alt-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #b63424;
+}
+
+/* gambar bahan – DIBESARKAN */
+.alt-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* baris alternatif (misal: Ikan Gabus, Ketumbar) → gambar di kiri, teks di kanan */
+.alt-row-sub {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+/* 3. Versi lama untuk Mie Celor / Model (.pi-alt-*) → diseragamkan */
+.pi-alt-wrapper {
+  max-width: 640px;
+  margin: 0 auto 24px;
+}
+
+/* kotak utama & kotak kecil */
+.pi-alt-main-btn,
+.pi-alt-sub-card {
+  padding: 12px 22px;
+  border-radius: 22px;
+}
+
+/* gambar utama & alternatif dibesarkan */
+.pi-alt-main-img,
+.pi-alt-sub-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* teks bahan di sebelah kiri, isi padat */
+.pi-alt-sub-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* responsif HP: tetap full lebar */
+@media (max-width: 768px) {
+  .burgo-panel[data-panel="alternatif"] > *,
+  .alt-section,
+  .pi-alt-wrapper {
+    max-width: 100%;
+  }
+
+  .alt-img,
+  .pi-alt-main-img,
+  .pi-alt-sub-img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* =========================================
+   PERBAIKI POSISI BAHAN ALTERNATIF (KIRI)
+   ========================================= */
+
+/* Panel "Bahan Alternatif" di semua resep:
+   - tidak di-center lagi
+   - dibatasi max 640px tapi sejajar kiri bar merah
+*/
+.burgo-panel[data-panel="alternatif"] {
+  display: block; /* batalin flex center yang lama */
+}
+
+.burgo-panel[data-panel="alternatif"] > * {
+  width: 100%;
+  max-width: 640px;      /* biar kotak nggak kepanjangan */
+  margin-left: 0;        /* tempel kiri (ikut padding .burgo-content) */
+  margin-right: auto;    /* sisa ruang di kanan */
+}
+
+/* Versi global yang dipakai Martabak HAR, Model, dll */
+.alt-section,
+.pi-alt-wrapper {
+  max-width: 640px;
+  margin-left: 0;        /* jangan auto (center) */
+  margin-right: auto;
+}
+
+/* =========================================
+   GALERI GESER – DETAIL SEJARAH MAKANAN
+   Berlaku untuk SEMUA makanan
+   ========================================= */
+
+.detail-gallery-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.detail-gallery-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.detail-gallery-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #5a4335;
+  margin-bottom: 22px;
+}
+
+/* ============ SECTION GALERI GESER ============ */
+
+.detail-gallery-section {
+  margin-top: 32px;
+  padding: 0;                 /* biar slider bisa full kiri-kanan */
+  background: transparent;    /* nggak perlu card lagi */
+}
+
+/* judul & subjudul masih punya padding dikit biar rapi */
+.detail-gallery-title {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  margin: 0 0 4px;
+  padding: 0 24px;
+  color: #2b1b12;
+}
+
+.detail-gallery-subtitle {
+  font-size: 13px;
+  color: #6b5a52;
+  padding: 0 24px;
+}
+
+/* slider full width, bentuk panjang */
+.dg-slider {
+  margin-top: 12px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* viewport = jendela */
+.dg-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* track = deretan slide */
+.dg-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* setiap item = 1 layar penuh */
+.dg-item {
+  min-width: 100%;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ✅ FOTO PANJANG, SEDIKIT LEBIH TINGGI, FULL KIRI–KANAN */
+.dg-item img {
+  width: 100%;
+  height: 300px;       /* ini yang bikin “panjang tapi gede dikit” */
+  object-fit: cover;   /* biar tetap rapi, kepotong dikit gak apa */
+  display: block;
+}
+
+/* caption di atas foto, bawah */
+.dg-caption {
+  position: absolute;
+  left: 24px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  max-width: 70%;
+  font-size: 13px;
+}
+
+.dg-caption h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dg-caption p {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* intro slide (geserpalembang) kalau mau beda dikit */
+.dg-item.dg-intro .dg-caption {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+  .detail-gallery-title {
+    font-size: 20px;
+    padding: 0 16px;
+  }
+
+  .detail-gallery-subtitle {
+    font-size: 12px;
+    padding: 0 16px;
+  }
+
+  .dg-item img {
+    height: 220px;   /* biar di HP nggak terlalu tinggi */
+  }
+
+  .dg-caption {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  .dg-caption h3 {
+    font-size: 13px;
+  }
+
+  .dg-caption p {
+    font-size: 11px;
+  }
+}
+
+
+/* tombol panah kiri/kanan */
+.dg-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f6b41a;
+  color: #5a2600;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.dg-nav:active {
+  transform: translateY(1px);
+}
+
+/* dots di bawah slider */
+.dg-dots {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dg-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f3c989;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dg-dot.dg-dot-active {
+  opacity: 1;
+  background-color: #ffb700;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .dg-slider {
+    max-width: 100%;
+  }
+
+  .dg-item img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-gallery-section {
+    margin-top: 40px;
+  }
+
+  .dg-slider {
+    gap: 8px;
+  }
+
+  .dg-nav {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .dg-item img {
+    height: 220px;
+  }
+}
+
+/* ========== FIX FOOTER NEMPEL DI BAWAH ========== */
+
+/* Biar tinggi halaman minimal setinggi layar */
+html,
+body {
+  height: 100%;
+}
+
+/* Body dijadiin kolom: atas = navbar+konten, bawah = footer */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Konten utama yang isi tulisan/foto, biar ngisi ruang kosong di atas footer */
+main,
+.detail-main,
+.resep-main,
+.sejarah-main,
+.burgo-resep-main {
+  flex: 1 0 auto;
+}
+
+/* Override min-height:100vh yang lama di .detail-main biar nggak dobel tinggi */
+.detail-main {
+  min-height: auto !important;
+}
+
+/* Footer jangan ikut mengecil, tetap di paling bawah */
+.site-footer {
+  flex-shrink: 0;
+}
+
+/* ========== FIX FOOTER NEMPEL DI BAWAH ========== */
+
+html,
+body {
+  height: 100%;
+}
+
+/* body jadi flex kolom: atas = konten, bawah = footer */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* footer didorong ke paling bawah layar kalau konten sedikit */
+.site-footer {
+  margin-top: auto;
+}
+
+/* =========================================================
+   PERAPIHAN HALAMAN SEJARAH MAKANAN
+   (Pindang Ikan, Burgo, Mie Celor, dll)
+   ========================================================= */
+
+/* wrapper lebih lebar & tinggi bawah lebih panjang dikit */
+.detail-body .detail-wrapper {
+  max-width: 1200px;
+  padding: 0 32px 90px;
+}
+
+/* background foto sedikit lebih jelas biar gak keliatan kosong */
+.detail-body .detail-hero-bg {
+  opacity: 0.35;
+}
+
+/* TOP BAR – chip judul & quote sedikit dibesarkan */
+.detail-body .detail-title-pill {
+  padding: 12px 52px;
+  font-size: 20px;
+}
+
+.detail-body .detail-subtitle {
+  font-size: 13px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* SECTION 1 – jarak & ukuran kartu dibesarkan */
+.detail-body .detail-section-1 {
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+.detail-body .detail-text-box {
+  padding: 30px 32px;
+  border-radius: 14px;
+}
+
+/* judul & paragraf kartu utama lebih besar + justify */
+.detail-body .detail-text-box h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.detail-body .detail-text-box p {
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+/* foto miring di kanan sedikit dibesarkan */
+.detail-body .detail-photo-inner {
+  max-width: 360px;
+  padding: 18px;
+}
+
+.detail-body .detail-photo-inner img {
+  border-radius: 8px;
+}
+
+/* SECTION 2 – filosofi: kartu lebih lebar & padat */
+.detail-body .detail-section-2 {
+  margin-top: 60px;
+  padding-top: 60px;
+}
+
+.detail-body .detail-bottom-card {
+  max-width: 780px;
+  padding: 30px 32px;
+  border-radius: 14px;
+}
+
+.detail-body .detail-bottom-card p {
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+/* judul “Filosofi dan Warisan Budaya” sedikit dibesarkan */
+.detail-body .detail-bottom-left h3 {
+  font-size: 20px;
+}
+
+/* titik kecil dekoratif diperbesar dikit biar kerasa ngisi */
+.detail-body .detail-dots .dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* SECTION 3 – galeri geser: beri jarak atas lebih besar */
+.detail-body .detail-gallery-section {
+  margin-top: 70px;
+}
+
+/* sedikit perbesar tinggi gambar slider supaya tampak “penuh” */
+.detail-body .dg-item img {
+  height: 320px;
+}
+
+/* RESPONSIVE HP – jangan terlalu besar di layar kecil */
+@media (max-width: 768px) {
+  .detail-body .detail-wrapper {
+    padding: 0 20px 70px;
+  }
+
+  .detail-body .detail-text-box {
+    padding: 22px 18px;
+  }
+
+  .detail-body .detail-text-box h2 {
+    font-size: 20px;
+  }
+
+  .detail-body .detail-text-box p,
+  .detail-body .detail-bottom-card p {
+    font-size: 13px;
+  }
+
+  .detail-body .detail-bottom-card {
+    padding: 22px 18px;
+  }
+
+  .detail-body .dg-item img {
+    height: 230px;
+  }
+}
+
+/* =========================================================
+   SECTION FAKTA SINGKAT + KENAPA HARUS COBA
+   Berlaku untuk semua halaman detail (detail-body)
+   ========================================================= */
+
+.detail-facts-section {
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+/* judul utama */
+.detail-facts-title {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  color: #b63424;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+/* grid kartu fakta */
+.detail-facts-grid {
+  max-width: 980px;
+  margin: 0 auto 26px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.detail-fact-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 14px 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1c1a6;
+}
+
+.detail-fact-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #b96a33;
+  margin-bottom: 4px;
+}
+
+.detail-fact-value {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #3a2a22;
+}
+
+/* kartu alasan */
+.detail-reason-card {
+  max-width: 880px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  padding: 22px 26px 20px;
+  box-shadow: 0 12px 26px rgba(91, 27, 27, 0.15);
+  border: 1px solid #f1c1a6;
+}
+
+.detail-reason-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.detail-reason-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #4a3a32;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .detail-facts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-reason-card {
+    padding: 18px 16px 18px;
+  }
+
+  .detail-reason-title {
+    font-size: 18px;
+  }
+
+  .detail-reason-list {
+    font-size: 12px;
+  }
+}
+
+/* Pusatkan teks di dalam kartu fakta */
+.detail-fact-card {
+  text-align: center;              /* teks di tengah */
+  display: flex;
+  flex-direction: column;
+  align-items: center;             /* label & value di tengah horizontal */
+  justify-content: center;         /* di tengah vertikal juga */
+}
+
+.detail-fact-label {
+  text-align: center;
+}
+
+.detail-fact-value {
+  text-align: center;
+}
+
+/* ================================
+   RAPiHIN KARTU FAKTA + BOX KENAPA
+   ================================ */
+
+/* baris kartu fakta: semua kartu punya tinggi sama */
+.detail-facts-row {
+  align-items: stretch; /* semua kartu ditarik sama tinggi */
+}
+
+/* kartu fakta di atas (ASAL, JENIS HIDANGAN, dll) */
+.detail-fact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* isi di tengah vertikal */
+  align-items: center;       /* di tengah horizontal */
+  text-align: center;
+
+  min-height: 130px;         /* biar tinggi rata walau isi 1–2 baris */
+  border-width: 2px;         /* garis kotak lebih tebal */
+  border-style: solid;
+  border-color: rgba(224, 169, 134, 0.9); /* boleh ganti kalau mau */
+}
+
+/* judul oranye & isi di tengah semua */
+.detail-fact-label,
+.detail-fact-value {
+  width: 100%;
+  text-align: center;
+}
+
+/* judul "Kenapa Harus Coba Pindang Ikan?" di tengah */
+.detail-reason-card h2 {
+  text-align: center;
+}
+
+/* garis kotak besar "Kenapa Harus Coba..." ikut ditebelin */
+.detail-reason-card {
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(224, 169, 134, 0.9);
+}
+
+/* opsional: biar bullet tetap rapi walau judul di tengah */
+.detail-reason-card ul {
+  margin-top: 14px;
+}
+
+/* Pusatkan teks di kotak putih atas & bawah (sejarah Pindang) */
+.detail-section-1 .detail-text-box,
+.detail-bottom-card {
+  text-align: center;
+}
+
+/* Pastikan judul & paragraf di dalam benar-benar center */
+.detail-section-1 .detail-text-box h2,
+.detail-section-1 .detail-text-box p,
+.detail-bottom-card p {
+  text-align: center;
+}
+
+
+/* Perbesar kartu foto + tombol play di halaman sejarah (Pindang, dll) */
+.detail-section-1 .detail-photo-inner {
+  max-width: 380px;      /* dari 320px → lebih besar */
+  padding: 20px;         /* bingkai marun sedikit lebih tebal */
+}
+
+.detail-section-1 .detail-photo-inner img {
+  width: 100%;
+  height: auto;
+}
+
+/* Perbesar lingkaran play-nya */
+.detail-section-1 .detail-play-btn {
+  width: 72px;           /* sebelumnya 52px */
+  height: 72px;
+  font-size: 30px;
+}
+
+/* Rapatkan jarak ke bagian "Filosofi dan Warisan Budaya" */
+.detail-section-2 {
+  margin-top: 20px;   /* sebelumnya 40px */
+  padding-top: 20px;  /* sebelumnya 40px */
+}
+
+/* Rapatkan kartu putih ke judul merah di kiri */
+.detail-bottom-card {
+  margin-top: 40px;   /* sebelumnya 80px */
+}
+
+/* ===== PERBESAR 2 KOTAK TEKS SEJARAH (ATAS & BAWAH) ===== */
+
+/* kotak putih utama di bagian sejarah */
+.detail-text-box,
+.detail-bottom-card {
+  padding: 40px 52px;      /* lebih tebal dari sebelumnya */
+  border-radius: 16px;
+}
+
+/* kotak bawah (Filosofi & Warisan Budaya) dibuat lebih lebar */
+.detail-bottom-card {
+  max-width: 900px;        /* tadinya lebih kecil, sekarang lebih gede */
+}
+
+/* teks di dalam kedua kotak tetap rata tengah & agak diperbesar */
+.detail-text-box h2,
+.detail-text-box p,
+.detail-bottom-card p {
+  text-align: center;
+}
+
+.detail-text-box h2 {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.detail-text-box p,
+.detail-bottom-card p {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* RESPONSIVE: di HP jangan terlalu besar */
+@media (max-width: 768px) {
+  .detail-text-box,
+  .detail-bottom-card {
+    padding: 24px 18px;
+  }
+
+  .detail-text-box h2 {
+    font-size: 20px;
+  }
+
+  .detail-text-box p,
+  .detail-bottom-card p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+}
+
+/* =======================================================
+   PERBESAR 2 KOTAK TEKS + POLAROID VIDEO (MIRIP KUE 8 JAM)
+   ======================================================= */
+
+/* SECTION 1 – grid teks & foto */
+.detail-section-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* KOTAK TEKS ATAS: "Apa Itu ...." */
+.detail-text-box {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  padding: 38px 44px;
+  max-width: 720px;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* teks di dalam kotak balik lagi rata kiri (kayak contoh) */
+.detail-text-box h2,
+.detail-text-box p,
+.detail-bottom-card p {
+  text-align: left;
+}
+
+.detail-text-box h2 {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.detail-text-box p,
+.detail-bottom-card p {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* SECTION 2 – judul filosofi lebih dekat + kotak besar */
+.detail-section-2 {
+  margin-top: 24px;      /* jarak dipendekin biar nggak kosong */
+  padding-top: 24px;
+}
+
+.detail-bottom-left {
+  top: 10px;
+}
+
+/* KOTAK TEKS BAWAH: "Filosofi dan Warisan Budaya" */
+.detail-bottom-card {
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  padding: 34px 44px;
+  margin: 48px auto 0;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* =================== POLAROID VIDEO =================== */
+
+.detail-photo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* kartu polaroid: ada bingkai putih + marun di dalam, agak miring */
+.detail-photo-inner {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 22px;
+  background: #7b1c26;
+  border-radius: 18px;
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
+  transform: rotate(7deg);
+  overflow: visible;
+}
+
+/* bingkai putih luar polaroid */
+.detail-photo-inner::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background: #ffffff;
+  border-radius: 22px;
+  z-index: -1;
+}
+
+/* foto di dalam polaroid */
+.detail-photo-inner img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+}
+
+/* tombol play kuning lebih besar di tengah */
+.detail-play-btn {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  border: none;
+  background-color: #f6b41a;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.35);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .detail-section-1 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .detail-text-box {
+    max-width: 100%;
+    padding: 26px 20px;
+  }
+
+  .detail-bottom-card {
+    max-width: 100%;
+    padding: 26px 20px;
+    margin-top: 30px;
+  }
+
+  .detail-photo-inner {
+    max-width: 320px;
+    padding: 18px;
+    transform: rotate(4deg);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .detail-photo-inner::before {
+    inset: -18px;
+    border-radius: 20px;
+  }
+
+  .detail-play-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+}
+
+/* ===============================
+   FILOSOFI & WARISAN BUDAYA
+   =============================== */
+
+/* jarak section biar kotak agak naik */
+.detail-section-2 {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+/* judul merah dipindah ke tengah vertikal,
+   agak mendekat ke kotak putih di kanan */
+.detail-bottom-left {
+  position: absolute;
+  left: 120px;              /* geser mendekati kotak putih */
+  top: 50%;                 /* di tengah tinggi kotak */
+  transform: translateY(-50%);
+}
+
+/* teks judul menghadap ke kotak (rata kanan) */
+.detail-bottom-left h3 {
+  text-align: right;
+}
+
+/* kotak putih sedikit dinaikkan */
+.detail-bottom-card {
+  margin-top: 20px;         /* sebelumnya lebih besar */
+}
+
+/* teks di dalam kotak putih dibuat rata tengah */
+.detail-bottom-card p {
+  text-align: center;
+}
+
+
+/* ===============================
+   RESPONSIVE: HP / TABLET
+   =============================== */
+@media (max-width: 900px) {
+  .detail-bottom-left {
+    position: static;
+    transform: none;
+    left: 0;
+    margin-bottom: 8px;
+  }
+
+  .detail-bottom-left h3 {
+    text-align: left;
+  }
+
+  .detail-bottom-card {
+    margin-top: 12px;
+  }
+
+  .detail-bottom-card p {
+    text-align: left;
+  }
+}
+
+/* ===== PERBAIKI POSISI BAGIAN FILOSOFI ===== */
+
+/* kotak putih agak dinaikkan sedikit */
+.detail-section-2 {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+/* judul merah di kiri, sejajar tengah secara vertikal,
+   tapi tidak menabrak kotak putih */
+.detail-bottom-left {
+  position: absolute;
+  top: 50%;
+  left: 10px;      /* <--- makin kecil, makin ke kiri, makin jauh dari kotak */
+  transform: translateY(-50%);
+  max-width: 220px;
+}
+
+
+
+/* judul tetap rata kiri */
+.detail-bottom-left h3 {
+  text-align: left;
+}
+
+/* kotak putih: lebih dekat ke atas */
+.detail-bottom-card {
+  margin: 10px auto 0;        /* sebelumnya terlalu jauh */
+}
+
+/* teks dalam kotak putih rata tengah */
+.detail-bottom-card p {
+  text-align: center;
+}
+
+/* ===== RESPONSIVE HP / TABLET ===== */
+@media (max-width: 900px) {
+  .detail-bottom-left {
+    position: static;
+    transform: none;
+    left: 0;
+    max-width: none;
+    margin-bottom: 8px;
+  }
+
+  .detail-bottom-left h3 {
+    text-align: left;
+  }
+
+  .detail-bottom-card {
+    margin-top: 12px;
+  }
+
+  .detail-bottom-card p {
+    text-align: left;
+  }
+}
+
+/* JARAKKAN KOTAK PUTIH DARI JUDUL MERAH */
+.detail-bottom-card {
+  margin-left: 260px;   /* sebelumnya 220px, tambahin 40px biar ada celah */
+}
+
+/* ===========================
+   BURGO – PERKECIL POLAROID
+   =========================== */
+
+.detail-body.detail-burgo .detail-photo-card {
+  transform: scale(0.70);          /* kecilkan seluruh polaroid jadi 70% */
+  transform-origin: top right;     /* kecilnya dari sisi kanan atas */
+  margin-left: 40px;               /* kasih jarak biar nggak nempel teks */
+}
+
+/* bingkai polaroid dipipihkan */
+.detail-body.detail-burgo .detail-photo-inner {
+  padding: 12px;                   /* frame putih lebih tipis */
+  border-radius: 12px !important;
+}
+
+/* gambar di dalamnya tetap responsif */
+.detail-body.detail-burgo .detail-photo-inner img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* kalau masih nempel ke teks, naikkan jarak column-gap */
+.detail-body.detail-burgo .detail-section-1 {
+  column-gap: 60px;                /* bisa naik jadi 70 atau 80 kalau mau lebih jauh */
+}
+
+/* =========================================
+   BURGO – POLAROID NORMAL, FRAME PUTIH TIPIS
+   ========================================= */
+
+/* 1. Balikin ukuran polaroid (hapus efek kecil 70%) */
+.detail-body.detail-burgo .detail-photo-card {
+  transform: none !important;      /* tidak di-scale lagi */
+  transform-origin: center center;
+  margin-left: 40px;               /* biar tetap nggak nempel teks */
+}
+
+/* 2. Tipisin bingkai putihnya saja */
+.detail-body.detail-burgo .detail-photo-inner {
+  padding: 10px !important;        /* SEMAKIN KECIL padding = frame makin tipis
+                                      contoh: 8px atau 6px kalau mau super tipis */
+  border-radius: 14px !important;  /* sudut masih agak membulat */
+  background-color: #ffffff;       /* warna bingkai putih */
+}
+
+/* 3. Gambar tetap isi penuh di dalam bingkai */
+.detail-body.detail-burgo .detail-photo-inner img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ==== Pindang & halaman detail lain: rapatkan ke navbar ==== */
+.detail-wrapper {
+  margin-top: 20px;              /* dulu 40px, sekarang lebih dekat ke navbar */
+}
+
+/* ==== Tombol merah mundur sedikit ke kiri ==== */
+.detail-topbar {
+  padding-left: 8px;             /* kasih ruang sedikit di kiri baris atas */
+}
+
+.detail-back-btn {
+  margin-left: -20px;            /* geser lebih ke kiri, bisa ubah -10 / -30 sesuai selera */
+}
+
+/* ================= 4 KOTAK SEJARAH BURGO ================= */
+
+.burgo-history-section {
+  margin-top: 48px;
+}
+
+.burgo-history-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.burgo-history-subtitle {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444444;
+}
+
+.burgo-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.burgo-history-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.burgo-history-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.burgo-history-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555555;
+}
+
+/* HP: kotak jadi 1 kolom */
+@media (max-width: 768px) {
+  .burgo-history-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .burgo-history-section {
+    margin-top: 32px;
+  }
+}
+
+/* ===== POSISI FILOSOFI: KOTAK DI KANAN, TEKS DI TENGAH ===== */
+
+.detail-bottom-card {
+  max-width: 900px;
+  /* kiri 260px: biar menjauh dari judul merah di kiri */
+  margin: 10px 40px 0 260px !important;
+  text-align: center !important;
+}
+
+.detail-bottom-card p {
+  text-align: center !important;
+}
+
+/* ===== WARNA MERAH UNTUK JUDUL SLIDER “KULINER PALEMBANG LAINNYA” ===== */
+.detail-gallery-title {
+  color: #8a1f1f !important;   /* ganti warna merah sesuai tema kamu */
+}
+
+/* ===== PERBESAR KARTU SLIDER KULINER PALEMBANG ===== */
+
+/* jarak atas–bawah section galeri */
+.detail-gallery-section {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+/* bikin kartu sedikit lebih PANJANG (lebar) */
+.dg-slider {
+  max-width: 1200px !important;   /* tambah lebar dari default */
+  margin: 0 auto !important;
+}
+
+/* bikin kartu sedikit lebih TINGGI */
+.dg-item {
+  min-width: 100% !important;
+  height: 420px !important;       /* naikkan tingginya (boleh 440 kalau mau lebih tinggi) */
+}
+
+/* gambar isi kartu ikut memenuhi tinggi baru */
+.dg-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 32px !important; /* tetap sudut bulat */
+}
+
+/* Dekatkan section "Kuliner Palembang Lainnya" ke footer */
+.detail-gallery-section {
+  margin-bottom: 20px !important;   /* sebelumnya mungkin besar, misal 60–80 */
+  padding-bottom: 10px !important;
+}
+
+/* Kurangi ruang kosong bawah keseluruhan halaman detail */
+.detail-main {
+  padding-bottom: 20px !important;
+}
+
+/* ========== MODAL VIDEO ========== */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.video-modal.show {
+  display: flex;
+}
+
+.video-modal-content {
+  width: 80%;
+  max-width: 850px;
+  background: #a52626; /* warna merah seperti di gambarmu */
+  border-radius: 18px;
+  padding: 20px;
+  position: relative;
+}
+
+.video-modal-content iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* tombol X */
+.video-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 32px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ==============================
+   FIX TAB RESEP (SEMUA RESEP)
+   ============================== */
+
+/* Semua panel tab disembunyikan dulu */
+.burgo-content .burgo-panel {
+  display: none;
+}
+
+/* Hanya panel yang sedang aktif yang ditampilkan */
+.burgo-content .burgo-panel.active {
+  display: block;
+}
+/* === PERBAIKAN TOMBOL SLIDER SEJARAH === */
+.history-slider {
+  position: relative;
+}
+
+.history-viewport {
+  position: relative;
+  z-index: 1;
+}
+
+.history-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;              /* di atas gambar/slider */
+  cursor: pointer;
+  pointer-events: auto;    /* pastikan bisa diklik */
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* kiri & kanan */
+.history-nav.prev {
+  left: 10px;
+}
+
+.history-nav.next {
+  right: 10px;
+}
+
+/* kalau ada rule lain yang matiin klik button, kita override */
+.history-slider button {
+  pointer-events: auto !important;
+}
+
+/* === PERAPIHAN TOMBOL SLIDER SEJARAH === */
+.history-slider {
+  position: relative;
+}
+
+.history-viewport {
+  position: relative;
+  z-index: 1;
+}
+
+.history-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  cursor: pointer;
+  pointer-events: auto;
+
+  /* bentuk & warna tombol */
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+
+  /* ganti warna kuning-putih lembut (silakan ubah kalau punya kode warna sendiri) */
+  background: #fbe7b0;   /* kuning pucat */
+  color: #c65a1b;        /* panah agak cokelat/oranye */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* jarak dari kiri/kanan biar nggak dempet */
+.history-nav.prev {
+  left: 24px;
+}
+
+.history-nav.next {
+  right: 24px;
+}
+
+/* jaga-jaga kalau ada rule lain yang matiin klik */
+.history-slider button {
+  pointer-events: auto !important;
+}
+
+/* === RATAIN POSISI TOMBOL TANPA NGUTAK-ATIK FOTO & TEKS === */
+
+/* kasih tinggi minimum ke paragraf supaya semua card punya “ruang teks”
+   yang hampir sama, jadi tombolnya sejajar */
+.history-card-body p {
+  min-height: 110px;     /* kalau masih kurang sejajar, boleh naikin 120-130 */
+  margin-bottom: 24px;   /* jarak manis sebelum tombol */
+}
+
+/* tombol tetap tampil biasa, nggak di-fleksin */
+.history-btn {
+  display: inline-block;
+}
+
+/* === POSISI & STYLE TOMBOL SLIDER SEJARAH === */
+
+/* pastikan kontainer relatif */
+.history-slider {
+  position: relative;
+}
+
+/* style dasar tombol panah */
+.history-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #ffe08a;        /* kuning lembut */
+  color: #c5541c;             /* panah oranye */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  z-index: 10;                /* biar gampang diklik, di atas konten lain */
+}
+
+/* panah kiri di luar sisi kiri kartu */
+.history-nav.prev {
+  left: -32px;                /* geser keluar kartu, bisa kamu ubah -28, -36, dll */
+}
+
+/* panah kanan di luar sisi kanan kartu */
+.history-nav.next {
+  right: -32px;
+}
+
+/* ===== HILANGKAN SCROLL KE KANAN (VERSI AMAN) ===== */
+html,
+body {
+  overflow-x: hidden;     /* cukup ini saja */
+}
+
+/* kalau ada yang makai 100vw, itu sering bikin geser horizontal */
+* {
+  box-sizing: border-box;
+}
+
+/* ==== RATAKAN TOMBOL "LIHAT RESEP" DI SEMUA CARD ==== */
+.recipe-page {
+  /* kalau belum flex, aman kita paksa flex */
+  display: flex;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;      /* susun: gambar → judul → teks → tombol */
+}
+
+/* teks deskripsi boleh memanjang, sisanya ngedorong ke atas */
+.recipe-card .recipe-desc {
+  flex-grow: 1;                /* isi bagian tengah, biar tinggi card seragam */
+}
+
+/* tombol selalu di bagian bawah card dan tetap di tengah */
+.recipe-card .recipe-btn {
+  margin-top: 24px;            /* jarak sedikit dari teks */
+  align-self: center;          /* tetap posisi tengah */
+}
+
+/* ===== BACKGROUND JEMBATAN MENYATUKAN RESEP + REKOMENDASI ===== */
+/* dipakai di <div class="bg-jembatan"> ... </div> */
+.bg-jembatan {
+  background-image: url("public/img/jembatan4.png"); /* pastikan path & nama file benar */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* section di dalamnya transparan saja, biar kelihatan background jembatan */
+.bg-jembatan .recipe-section,
+.bg-jembatan .location-section {
+  background: transparent;
+  margin: 0 auto;
+}
+
+/* kartu resep tetap putih */
+.bg-jembatan .recipe-card {
+  background-color: #ffffff;
+}
+
+/* HILANGKAN KOTAK PUTIH DI MAP + TEKS REKOMENDASI */
+.bg-jembatan .location-map-card,
+.bg-jembatan .location-content {
+  background-color: transparent;  /* tidak ada putih lagi */
+  box-shadow: none;               /* kalau sebelumnya ada bayangan */
+  border: none;                   /* kalau sebelumnya ada border */
+}
+
+/* ===== PETA DALAM KOTAK COKLAT TIPIS ===== */
+
+/* card luar: jadi transparan aja */
+.bg-jembatan .location-map-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* kotak coklatnya di inner */
+.bg-jembatan .location-map-inner {
+  background: rgba(139, 87, 42, 0.96); /* coklat */
+  padding: 16px;
+  border-radius: 28px;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* map ikut rounded, nggak ada garis putih */
+.bg-jembatan .location-map-inner iframe {
+  border-radius: 20px;
+  display: block;
+}
+
+/* TEKS: tetap tanpa kotak, tapi warnanya jelas */
+.bg-jembatan .location-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0;
+}
+
+.bg-jembatan .location-content h2 {
+  color: #b73518;      /* merah bata */
+}
+
+.bg-jembatan .location-content p {
+  color: #4a240f;      /* coklat gelap biar kebaca */
+}
+
+
+/* =========================================================
+   BACKGROUND GELOMBANG BAGRESEP UNTUK SEMUA HALAMAN RESEP
+   (review + form + rekomendasi tempat)
+   ========================================================= */
+
+.resep-bagresep-bg {
+  position: relative;
+  margin-top: 40px;
+
+  /* gambar latar */
+  background-image: url("/img/bagresep2.png");
+  background-repeat: no-repeat;
+  background-size: cover;        /* biar full */
+  background-position: top center;
+
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* supaya kartu tetap "melayang" di atas background */
+.resep-bagresep-bg .burgo-review-section,
+.resep-bagresep-bg .burgo-feedback-section,
+.resep-bagresep-bg .burgo-place-section {
+  background: transparent;
+}
+
+/* kalau sebelumnya section2 ini punya background putih/coklat di CSS lain,
+   hilangkan khusus saat dia ada di dalam .resep-bagresep-bg */
+.resep-bagresep-bg .burgo-review-section,
+.resep-bagresep-bg .burgo-feedback-section,
+.resep-bagresep-bg .burgo-place-section {
+  box-shadow: none;
+  border: none;
+}
+
+/* NAIKKAN POSISI SECTION REVIEW DI ATAS BAGRESEP */
+.burgo-review-section {
+  margin-top: -40px;   /* coba dulu -40; kalau mau lebih mepet bisa -50 / -60 */
+}
+
+/* ===== NAIKKAN JUDUL + KOTAK REVIEW SEDIKIT ===== */
+.burgo-review-section {
+  position: relative;   /* supaya bisa digeser dengan top */
+  top: -40px;           /* geser ke atas 40px, boleh diubah -30 / -50 sesuai selera */
+}
+
+/* =========================================================
+   HALAMAN REKOMENDASI TEMPAT KULINER
+   berlaku untuk rekomendasi.html
+   ========================================================= */
+
+/* wrapper utama */
+.rekom-main {
+  padding: 120px 0 80px;
+  background-color: #ffffff;
+}
+
+/* judul besar di atas */
+.rekom-hero {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.rekom-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  line-height: 1.3;
+  color: #b63424;
+  margin-bottom: 12px;
+}
+
+.rekom-hero p {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* layout 2 kolom: map kiri, list kanan */
+.rekom-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* map card */
+.rekom-map {
+  flex: 1.1;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  min-height: 320px;
+}
+
+/* list tempat makan */
+.rekom-list {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* kartu tiap tempat */
+.rekom-card {
+  display: flex;
+  align-items: stretch;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+/* foto di kiri */
+.rekom-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* teks di kanan */
+.rekom-body {
+  padding: 16px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rekom-body h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: #b63424;
+  margin: 0;
+}
+
+.rekom-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 8px;
+}
+
+/* tombol di bawah teks */
+.rekom-actions {
+  margin-top: auto;
+}
+
+.rekom-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: #f5a623;      /* kuning mirip tombol lain */
+  color: #b63424;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.rekom-btn:hover {
+  background-color: #ffb940;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ================== RESPONSIVE ================== */
+
+@media (max-width: 960px) {
+  .rekom-layout {
+    flex-direction: column;
+  }
+
+  .rekom-map {
+    min-height: 260px;
+  }
+
+  .rekom-card {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rekom-main {
+    padding-top: 100px;
+  }
+
+  .rekom-hero h1 {
+    font-size: 26px;
+  }
+
+  .rekom-card {
+    flex-direction: column;
+  }
+
+  .rekom-img {
+    width: 100%;
+    height: 170px;
+  }
+
+  .rekom-body {
+    padding: 14px 16px 16px;
+  }
+}
+
+/* =========================================
+   HALAMAN REKOMENDASI TEMPAT KULINER
+   ========================================= */
+
+.rekom-body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #ffffff;
+}
+
+.detail-hero-bg {
+  position: fixed;
+  inset: 0;                          /* memenuhi seluruh layar */
+  background-image: url("/img/baground2sjr.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.35;                     /* biar fade */
+  z-index: -1;                       /* di belakang semua elemen */
+}
+
+
+/* KONTEN DI TENGAH */
+.rekom-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+  color: #3b3027;
+}
+
+/* JUDUL HALAMAN DI ATAS, TENGAH */
+.rekom-page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.rekom-page-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1.3;
+  color: #b63424;
+  margin-bottom: 8px;
+}
+
+.rekom-page-header p {
+  font-size: 14px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* LAYOUT 2 KOLOM: KIRI PETA, KANAN LIST */
+.rekom-layout {
+  display: flex;
+  align-items: center;   /* peta di tengah vertikal */
+  gap: 40px;
+}
+
+/* KOLOM PETA */
+.rekom-map-column {
+  flex: 1;
+}
+
+.rekom-map-frame {
+  border-radius: 26px;
+  overflow: hidden;
+  border: 6px solid rgba(117, 71, 32, 0.9); /* bingkai coklat */
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  height: 420px;
+}
+
+/* KOLOM LIST TEMPAT (TANPA KOTAK) */
+.rekom-list-column {
+  flex: 1.1;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* SCROLLBAR HALUS */
+.rekom-list-column::-webkit-scrollbar {
+  width: 6px;
+}
+.rekom-list-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rekom-list-column::-webkit-scrollbar-thumb {
+  background: rgba(182, 52, 36, 0.75);
+  border-radius: 999px;
+}
+
+/* SATU TEMPAT */
+/* CARD PUTIH PER TEMPAT */
+.rekom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rekom-place {
+  background-color: rgba(255, 255, 255, 0.96); /* balok putih */
+  border-radius: 18px;
+  padding: 16px 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  border-left: 5px solid #b63424;             /* aksen merah di kiri, opsional */
+}
+
+.rekom-place:last-child {
+  margin-bottom: 0;
+}
+
+.rekom-place h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.rekom-place p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+
+.rekom-place h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 4px;
+}
+
+.rekom-place p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+/* LINK KE MAPS */
+.rekom-link {
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #f7a500;
+}
+
+.rekom-link:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .rekom-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rekom-map-frame {
+    height: 320px;
+  }
+
+  .rekom-list-column {
+    max-height: none;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rekom-hero-bg {
+    padding: 110px 0 70px;
+  }
+
+  .rekom-page-header h1 {
+    font-size: 24px;
+  }
+
+  .rekom-main {
+    padding: 0 16px;
+  }
+}
+
+/* ==== HAPUS PANEL PUTIH BESAR ==== */
+/* sesuaikan selector yang ada di file kamu, pakai banyak saja biar kena semua */
+.rekom-page,
+.rekom-section,
+.rekom-wrapper,
+.rekom-main,
+.location-section,
+.location-wrapper,
+.location-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* area list kanan (tempat cards di-scroll) juga jangan punya background sendiri */
+.rekom-list-wrap,
+.rekom-list-scroll,
+.rekom-list {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* ==== KARTU PUTIH SATU LAPIS SAJA ==== */
+.rekom-place {
+  background-color: #ffffff;                 /* balok putih utama */
+  border-radius: 18px;
+  padding: 16px 22px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  border-left: 5px solid #b63424;
+}
+
+/* teks di dalam kartu */
+.rekom-place h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.rekom-place p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+/* ==== HALAMAN REKOMENDASI KULINER ==== */
+
+.rekom-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: url("/img/img/bg-jembatan-rekom.jpg") center/cover no-repeat fixed;
+}
+
+/* konten utama di tengah antara navbar & footer */
+.rekom-main {
+  flex: 1;
+  padding: 40px 80px 110px;   /* bottom 110px supaya jauh dari footer */
+}
+
+/* HERO / judul */
+.rekom-hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.rekom-hero .rekom-badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #fbe0d6;
+  color: #b63424;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.rekom-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #b63424;
+  margin-bottom: 8px;
+}
+
+.rekom-hero p {
+  font-size: 15px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+
+/* layout map kiri – list kanan */
+.rekom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* MAP KIRI */
+.rekom-map-frame {
+  border-radius: 26px;
+  overflow: hidden;
+  border: 8px solid rgba(121, 69, 26, 0.85);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.rekom-map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 430px;
+}
+
+/* LIST KANAN */
+.rekom-list-wrap {
+  max-height: 430px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* scrollbar tipis dan warna senada */
+.rekom-list-wrap::-webkit-scrollbar {
+  width: 6px;
+}
+.rekom-list-wrap::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+.rekom-list-wrap::-webkit-scrollbar-thumb {
+  background: #d2745a;
+  border-radius: 4px;
+}
+
+/* tiap tempat = balok putih satu lapis */
+.rekom-place {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 18px 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  border-left: 5px solid #b63424;
+  margin-bottom: 20px;
+}
+
+.rekom-place:last-child {
+  margin-bottom: 0;
+}
+
+.rekom-place h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: #b63424;
+  margin-bottom: 6px;
+}
+
+.rekom-place p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.rekom-place a {
+  font-size: 14px;
+  color: #f4a400;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rekom-place a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .rekom-main {
+    padding: 24px 18px 90px;
+  }
+
+  .rekom-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .rekom-map-frame iframe,
+  .rekom-list-wrap {
+    max-height: none;
+    height: auto;
+  }
+}
+
+/* =========================================================
+   HALAMAN REKOMENDASI KULINER
+   ========================================================= */
+
+.rekom-body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #ffe9d6 0, #fff7f0 35%, #ffffff 100%);
+  color: #2f2722;
+}
+
+/* Kasih ruang dari navbar */
+.rekom-main {
+  max-width: 1120px;
+  margin: 110px auto 40px;
+  padding: 0 20px 20px;
+}
+
+/* HERO / JUDUL */
+.rekom-hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.rekom-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background-color: rgba(182, 52, 36, 0.08);
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.rekom-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: #3a2520;
+}
+
+.rekom-hero p {
+  font-size: 14px;
+  max-width: 620px;
+  margin: 0 auto;
+  color: #5a4b44;
+}
+
+/* LAYOUT MAP + LIST */
+.rekom-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* KARTU MAP */
+.rekom-map-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1c1a6;
+}
+
+.rekom-map-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #b63424;
+}
+
+.rekom-map-header p {
+  font-size: 13px;
+  color: #6a5c54;
+  margin-bottom: 12px;
+}
+
+.rekom-map-frame {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #f3d1b5;
+}
+
+.rekom-map-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rekom-map-note {
+  font-size: 11px;
+  color: #8a7a70;
+  margin-top: 8px;
+}
+
+/* LIST TEMPAT KANAN */
+.rekom-places {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 18px 18px 10px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1c1a6;
+}
+
+.rekom-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #f0c1a1;
+  padding-bottom: 8px;
+}
+
+.rekom-filter-bar span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  color: #3a2520;
+}
+
+.rekom-filter-hint {
+  font-size: 11px;
+  color: #8b7a72;
+}
+
+/* LIST SCROLLABLE SEDIKIT SUPAYA RAPI */
+.rekom-places-list {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* STYLE SCROLLBAR KECIL */
+.rekom-places-list::-webkit-scrollbar {
+  width: 5px;
+}
+.rekom-places-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rekom-places-list::-webkit-scrollbar-thumb {
+  background: #f1c1a6;
+  border-radius: 999px;
+}
+
+/* KARTU TEMPAT */
+.rekom-place-card {
+  padding: 14px 10px 12px;
+  border-radius: 14px;
+  background-color: #fffaf5;
+  border: 1px solid #f3d1b5;
+  margin-bottom: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.rekom-place-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  border-color: #f0b684;
+}
+
+.rekom-place-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.rekom-place-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3b2520;
+}
+
+.rekom-tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background-color: rgba(182, 52, 36, 0.08);
+  color: #b63424;
+  white-space: nowrap;
+}
+
+.rekom-place-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5a4b44;
+  margin-bottom: 8px;
+}
+
+.rekom-link {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #b63424;
+}
+
+.rekom-link:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .rekom-main {
+    margin-top: 96px;
+  }
+
+  .rekom-content {
+    grid-template-columns: 1fr;
+  }
+
+  .rekom-map-card {
+    order: 1;
+  }
+
+  .rekom-places {
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .rekom-main {
+    padding: 0 14px 18px;
+  }
+
+  .rekom-hero h1 {
+    font-size: 24px;
+  }
+
+  .rekom-hero p {
+    font-size: 13px;
+  }
+
+  .rekom-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .rekom-places-list {
+    max-height: none;
+  }
+}
+
+/* =========================================================
+   HALAMAN REKOMENDASI KULINER
+   ========================================================= */
+
+.rekom-main {
+  max-width: 1120px;
+  margin: 110px auto 40px;
+  padding: 0 20px 20px;
+}
+
+/* HERO / JUDUL */
+.rekom-hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.rekom-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background-color: rgba(182, 52, 36, 0.08);
+  color: #b63424;
+  margin-bottom: 10px;
+}
+
+.rekom-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: #3a2520;
+}
+
+.rekom-hero p {
+  font-size: 14px;
+  max-width: 620px;
+  margin: 0 auto;
+  color: #5a4b44;
+}
+
+/* LAYOUT MAP + LIST */
+.rekom-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+  gap: 24px;
+  align-items: stretch;        /* peta & list sama tinggi */
+}
+
+/* KARTU MAP */
+.rekom-map-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1c1a6;
+  display: flex;
+  flex-direction: column;      /* supaya iframe bisa fleksibel tinggi */
+}
+
+.rekom-map-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #b63424;
+}
+
+.rekom-map-header p {
+  font-size: 13px;
+  color: #6a5c54;
+  margin-bottom: 12px;
+}
+
+.rekom-map-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #f3d1b5;
+  flex: 1;                     /* isi tinggi card */
+  min-height: 260px;
+}
+
+.rekom-map-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rekom-map-note {
+  font-size: 11px;
+  color: #8a7a70;
+  margin-top: 8px;
+}
+
+/* LIST TEMPAT KANAN */
+.rekom-places {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 18px 18px 10px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1c1a6;
+  display: flex;
+  flex-direction: column;      /* header di atas, list mengisi sisa tinggi */
+}
+
+.rekom-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #f0c1a1;
+  padding-bottom: 8px;
+}
+
+.rekom-filter-bar span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  color: #3a2520;
+}
+
+.rekom-filter-hint {
+  font-size: 11px;
+  color: #8b7a72;
+}
+
+/* LIST SCROLLABLE */
+.rekom-places-list {
+  flex: 1;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* SCROLLBAR */
+.rekom-places-list::-webkit-scrollbar {
+  width: 5px;
+}
+.rekom-places-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rekom-places-list::-webkit-scrollbar-thumb {
+  background: #f1c1a6;
+  border-radius: 999px;
+}
+
+/* KARTU TEMPAT + THUMBNAIL */
+.rekom-place-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  background-color: #fffaf5;
+  border: 1px solid #f3d1b5;
+  margin-bottom: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.rekom-place-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  border-color: #f0b684;
+}
+
+.rekom-place-thumb {
+  flex: 0 0 82px;
+  height: 82px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.rekom-place-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rekom-place-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.rekom-place-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.rekom-place-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3b2520;
+}
+
+.rekom-tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background-color: rgba(182, 52, 36, 0.08);
+  color: #b63424;
+  white-space: nowrap;
+}
+
+.rekom-place-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5a4b44;
+  margin-bottom: 6px;
+}
+
+.rekom-link {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #b63424;
+}
+
+.rekom-link:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .rekom-main {
+    margin-top: 96px;
+  }
+
+  .rekom-content {
+    grid-template-columns: 1fr;
+  }
+
+  .rekom-map-card {
+    order: 1;
+  }
+
+  .rekom-places {
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .rekom-main {
+    padding: 0 14px 18px;
+  }
+
+  .rekom-hero h1 {
+    font-size: 24px;
+  }
+
+  .rekom-hero p {
+    font-size: 13px;
+  }
+
+  .rekom-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .rekom-places-list {
+    max-height: none;
+  }
+}
+
+/* ==== Layout khusus halaman rekomendasi ==== */
+
+/* Biar nggak ada margin putih di pinggir & bisa pakai layout flex */
+.rekom-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Biar area konten yang ngedorong footer ke bawah */
+.rekom-main {
+  flex: 1;
+}
+
+/* ==== RESET KECIL (aman buat semua halaman) ==== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== LAYOUT KHUSUS HALAMAN REKOMENDASI ==== */
+body.rekom-body {
+  /* jangan ubah warna, pakai warna yang sama dengan halamanmu sekarang */
+  background-color: #fff4e8; /* GANTI nilainya kalau kamu pakai kode lain */
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* override kalau di body ada padding global */
+  padding: 0 !important;
+}
+
+/* konten utama yang ngedorong footer ke bawah */
+.rekom-main {
+  flex: 1 0 auto;
+}
+
+/* footer di halaman rekom tidak punya margin ekstra */
+body.rekom-body .site-footer {
+  margin: 0;
+}
+
+/* ====== Bahan Alternatif Pindang Ikan ====== */
+
+/* awalnya disembunyikan */
+.pi-alt-row {
+  display: none;
+  margin-top: 18px;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* saat tombol '>' diklik, JS menambahkan class .show */
+.pi-alt-row.show {
+  display: flex;
+}
+
+/* efek kecil: panah berputar saat dibuka */
+.pi-alt-arrow-btn.active {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+/* ==== TOMBOL PLAY KARTU SEJARAH (BERANDA) ==== */
+
+/* container gambar */
+.history-card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+/* link-nya jadi overlay full yang dipake buat nge-center span */
+.history-card-image .play-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;   /* hilang garis bawah */
+  border: none;
+  background: transparent; /* biar gak nutup gambar */
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* lingkaran kuning + icon ▶ di tengah */
+.history-card-image .play-button span {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  background: #ffb700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 34px;
+  color: #ffffff;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Outer Box */
+.outer-box {
+  display: flex;
+  justify-content: center; /* Mengatur konten di tengah secara horizontal */
+  align-items: center; /* Mengatur konten di tengah secara vertikal */
+  height: 300px;
+  width: 400px;
+  border: 2px solid brown; /* Border luar */
+  padding: 20px; /* Padding luar */
+}
+
+/* Inner Box */
+.inner-box {
+  background-color: lightgreen;
+  padding: 16px;
+  border: 2px solid green;
+  display: flex;
+  justify-content: center; /* Menempatkan angka di tengah secara horizontal */
+  align-items: center; /* Menempatkan angka di tengah secara vertikal */
+  width: 100%;
+  height: 100%;
+}

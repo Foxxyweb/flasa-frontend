@@ -1,0 +1,318 @@
+// src/Pages/ModelDetail.jsx
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import "../styles/style.css";
+
+const SLIDES = [
+  {
+    id: 1,
+    img: "/img/geserpalembang.png",
+    title: "Kuliner Palembang",
+    desc: "Jelajahi beragam hidangan legendaris dari Bumi Sriwijaya.",
+  },
+  {
+    id: 2,
+    img: "/img/geserburgo.png",
+    title: "Burgo",
+    desc: "Lembaran beras dengan kuah santan gurih berbumbu.",
+    href: "burgo-sejarah.html",
+  },
+  {
+    id: 3,
+    img: "/img/geserpindangikan.png",
+    title: "Pindang Ikan",
+    desc: "Ikan segar dalam kuah asam pedas yang menyegarkan.",
+    href: "pindang-ikan.html",
+  },
+  {
+    id: 4,
+    img: "/img/geserpindangtulang.png",
+    title: "Pindang Tulang",
+    desc: "Tulang iga sapi dalam kuah asam pedas gurih.",
+    href: "pindang-tulang.html",
+  },
+  {
+    id: 5,
+    img: "/img/gesermiecelor.png",
+    title: "Mie Celor",
+    desc: "Mie bersantan kental dengan udang dan telur rebus.",
+    href: "mie-celor.html",
+  },
+  {
+    id: 6,
+    img: "/img/gesermodel.png",
+    title: "Model",
+    desc: "Olahan ikan dengan kuah bening yang ringan.",
+    href: "model.html",
+  },
+  {
+    id: 7,
+    img: "/img/gesermaksuba.png",
+    title: "Kue Maksuba",
+    desc: "Kue telur pekat berlapis yang lembut dan manis.",
+    href: "kue-maksuba.html",
+  },
+  {
+    id: 8,
+    img: "/img/geserkue8jam.png",
+    title: "Kue 8 Jam",
+    desc: "Kue legit khas Palembang yang dimasak berjam-jam.",
+    href: "kue-8jam.html",
+  },
+  {
+    id: 9,
+    img: "/img/gesereskacang.png",
+    title: "Es Kacang Merah",
+    desc: "Segarnya kacang merah, santan, dan es serut manis.",
+    href: "es-kacang-merah.html",
+  },
+  {
+    id: 10,
+    img: "/img/gesermartabakhar.png",
+    title: "Martabak HAR",
+    desc: "Martabak telur dengan kuah kari khas Palembang.",
+    href: "martabak-har.html",
+  },
+];
+
+export default function ModelDetail() {
+  // ==== SLIDER GALERI ====
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, []);
+
+  const trackStyle = {
+    transform: `translateX(-${currentSlide * 100}%)`,
+  };
+
+  // ==== VIDEO MODAL ====
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const videoURL = "https://www.youtube.com/embed/ddKxd0ntDLQ?si=I5dfpVGod_ZfYjqt";
+
+  const openModal = () => setIsVideoOpen(true);
+  const closeModal = () => setIsVideoOpen(false);
+
+  return (
+    <div className="detail-body model-bg">
+      <Navbar />
+
+      <main className="detail-main">
+        {/* BACKGROUND BESAR */}
+        <div
+          className="detail-hero-bg"
+          style={{ backgroundImage: "url('/img/baground2sjr.png')" }}
+        />
+
+        <div className="detail-wrapper">
+          {/* TOP BAR */}
+          <div className="detail-topbar">
+            <Link to="/sejarah" className="detail-back-btn">
+              <span>&larr;</span>
+            </Link>
+
+            <div className="detail-title-group">
+              <div className="detail-title-pill">Model</div>
+              <p className="detail-subtitle">
+                "Kelezatan lembut yang menyatukan cita rasa ikan dan kuah kaldu
+                dalam kehangatan tradisi Palembang."
+              </p>
+            </div>
+          </div>
+
+          {/* SECTION 1 */}
+          <section className="detail-section detail-section-1">
+            <div className="detail-text-box">
+              <h2>Apa Itu Model?</h2>
+              <p>
+                Model adalah salah satu makanan khas Palembang yang terbuat dari
+                adonan ikan dan tepung sagu, mirip seperti pempek, namun
+                disajikan dengan kuah kaldu udang atau ayam yang gurih. Dalam
+                penyajiannya, model biasanya diisi dengan potongan tahu di
+                dalamnya dan disiram kuah hangat yang kaya rasa, kemudian diberi
+                pelengkap seperti timun, bawang goreng, serta soun.
+              </p>
+              <p>
+                Cita rasa lembut dari adonan ikan yang berpadu dengan gurihnya
+                kuah kaldu membuat model menjadi hidangan favorit di berbagai
+                kesempatan. Makanan ini sering dinikmati saat berkumpul bersama
+                keluarga atau sebagai sajian utama dalam acara tradisional
+                masyarakat Palembang.
+              </p>
+            </div>
+
+            <div className="detail-photo-card">
+              <div className="detail-photo-inner">
+                <img src="/img/SEJMODEL.png" alt="Model" />
+                <button
+                  className="detail-play-btn"
+                  type="button"
+                  onClick={openModal}
+                >
+                  &#9658;
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION 2 */}
+          <section className="detail-section detail-section-2">
+            <div className="detail-bottom-left">
+              <h3>
+                Filosofi dan
+                <br />
+                Warisan Budaya
+              </h3>
+            </div>
+
+            <div className="detail-bottom-card">
+              <p>
+                Lebih dari sekadar kuliner lezat, model mencerminkan filosofi
+                masyarakat Palembang yang menjunjung tinggi kebersamaan,
+                keseimbangan, dan kesederhanaan. Kuah hangatnya melambangkan
+                keakraban, sementara perpaduan rasa gurih dan lembut
+                menggambarkan harmoni dalam kehidupan sehari-hari.
+              </p>
+              <p>
+                Model juga menjadi simbol kreativitas kuliner Palembang yang
+                mampu memadukan bahan sederhana menjadi hidangan berkelas dan
+                bernilai budaya tinggi. Hingga kini, model tetap menjadi
+                warisan rasa yang mempererat hubungan keluarga serta memperkaya
+                identitas gastronomi Palembang.
+              </p>
+            </div>
+
+            <div className="detail-dots">
+              <span className="dot active"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          </section>
+
+          {/* SECTION FAKTA + KENAPA HARUS COBA */}
+          <section className="detail-section detail-facts-section">
+            <h2 className="detail-facts-title">Fakta Singkat Model</h2>
+
+            <div className="detail-facts-grid">
+              <article className="detail-fact-card">
+                <span className="detail-fact-label">Asal</span>
+                <p className="detail-fact-value">
+                  Palembang, Sumatera Selatan
+                </p>
+              </article>
+
+              <article className="detail-fact-card">
+                <span className="detail-fact-label">Jenis Hidangan</span>
+                <p className="detail-fact-value">
+                  Olahan ikan berkuah bening, mirip pempek berkuah
+                </p>
+              </article>
+
+              <article className="detail-fact-card">
+                <span className="detail-fact-label">Bahan Utama</span>
+                <p className="detail-fact-value">
+                  Adonan ikan dan sagu, tahu, kaldu udang, dan mentimun
+                </p>
+              </article>
+
+              <article className="detail-fact-card">
+                <span className="detail-fact-label">Waktu Paling Pas</span>
+                <p className="detail-fact-value">
+                  Makan siang ringan atau makan sore
+                </p>
+              </article>
+            </div>
+
+            <article className="detail-reason-card">
+              <h3 className="detail-reason-title">Kenapa Harus Coba Model?</h3>
+              <ul className="detail-reason-list">
+                <li>
+                  Kuah beningnya ringan namun tetap gurih karena kaldu udang.
+                </li>
+                <li>
+                  Kombinasi adonan ikan dan tahu memberi tekstur yang menarik.
+                </li>
+                <li>
+                  Potongan mentimun dan bawang goreng menambah segar dan wangi.
+                </li>
+                <li>
+                  Cocok untuk yang ingin menikmati olahan ikan tanpa kuah
+                  santan berat.
+                </li>
+              </ul>
+            </article>
+          </section>
+
+          {/* SECTION 3 : GALERI GESER */}
+          <section className="detail-section detail-gallery-section">
+            <h2 className="detail-gallery-title">Kuliner Palembang Lainnya</h2>
+            <p className="detail-gallery-subtitle">
+              Geser fotonya untuk menjelajahi hidangan khas Palembang yang lain.
+            </p>
+
+            <div className="dg-slider">
+              <div className="dg-viewport">
+                <div className="dg-track" style={trackStyle}>
+                  {SLIDES.map((slide) => {
+                    const content = (
+                      <>
+                        <img src={slide.img} alt={slide.title} />
+                        <div className="dg-caption">
+                          <h3>{slide.title}</h3>
+                          <p>{slide.desc}</p>
+                        </div>
+                      </>
+                    );
+
+                    return slide.href ? (
+                      <a key={slide.id} href={slide.href} className="dg-item">
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={slide.id} className="dg-item dg-intro">
+                        {content}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      {/* POPUP VIDEO MODEL */}
+      <div
+        className={`video-modal ${isVideoOpen ? "show" : ""}`}
+        onClick={(e) => {
+          if (e.target.classList.contains("video-modal")) {
+            closeModal();
+          }
+        }}
+      >
+        <div className="video-modal-content">
+          <button className="video-close" onClick={closeModal}>
+            &times;
+          </button>
+          {isVideoOpen && (
+            <iframe
+              title="Video Model Palembang"
+              src={`${videoURL}?autoplay=1`}
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          )}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}

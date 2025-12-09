@@ -1,0 +1,23 @@
+/* Global reset ringan */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Agar seluruh aplikasi bisa full screen */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Hapus style default dari template Vite */
+#root {
+  text-align: unset;
+  max-width: unset;
+  padding: 0;
+}

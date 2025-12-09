@@ -409,27 +409,9 @@ export default function ResepBurgo() {
                           Tepung Tapioka
                         </span>
                       </div>
-                      <span className="burgo-alt-sec-chevron">&gt;</span>
+                      
                     </div>
-
-                    <div className="burgo-alt-sec-body">
-                      <p className="burgo-alt-desc">
-                        Tepung tapioka dapat menggantikan tepung sagu
-                        dengan perbandingan 1 : 1. Tekstur sedikit lebih
-                        kenyal, tetapi rasa tetap netral dan cocok untuk
-                        Burgo.
-                      </p>
-                      <p className="burgo-alt-text">
-                        • Gunakan tepung tapioka halus agar adonan tetap
-                        lembut.
-                        <br />
-                        • Jika terlalu kenyal, campur dengan sedikit tepung
-                        beras.
-                        <br />
-                        • Aduk adonan lebih lama supaya tepung tercampur
-                        rata.
-                      </p>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
